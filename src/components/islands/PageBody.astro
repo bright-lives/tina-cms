@@ -1,0 +1,11 @@
+---
+import Sections from '../sections/Sections.astro';
+import type { CmsPage } from '../../lib/data';
+
+interface Props {
+  data?: CmsPage | null;
+}
+
+const { data } = Astro.props;
+---
+{data && <Sections data={data} />}

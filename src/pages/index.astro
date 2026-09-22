@@ -1,17 +1,21 @@
 ---
+import Base from '../layouts/Base.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import { getPage } from '../lib/data';
+import { islands } from '../lib/islands';
+import PageBody from "../components/islands/PageBody.astro";
 
+const slug = 'homepage';
+const page = await getPage(slug);
+const data = page.data?.pages;
+
+if (!data) {
+  return new Response(`${slug} not found`, { status: 404 });
+}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base>
+  <TinaIsland name="page" wrapper={islands.page.wrapper} params={{ slug }} primary>
+    <PageBody data={data} />
+  </TinaIsland>
+</Base>

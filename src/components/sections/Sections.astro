@@ -1,0 +1,28 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import ConstellationDivider from '../space/ConstellationDivider.astro';
+
+import Hero from '../Hero.astro';
+
+import type { CmsPage } from '../../lib/data';
+
+interface Props {
+  data?: CmsPage | null;
+}
+
+const { data } = Astro.props;
+const sections = (data?.sections ?? []).filter(s => s !== null);
+---
+{sections.map((section, i) => {
+  const rendered = (() => {
+    switch (section.__typename) {
+      case 'PagesSectionsHero': return <Hero data={section} />;
+      }
+    })();
+  return (
+  <>
+    <div data-tina-field={tinaField(section)}>{rendered}</div>
+    {i < sections.length - 1 && <ConstellationDivider class="my-2 opacity-70" />}
+  </>
+    );
+  })}

@@ -1,0 +1,14 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { getConfig } from '../lib/data';
+
+const config = (await getConfig()).data?.config ?? null;
+---
+
+<!doctype html>
+<html lang="en">
+  <BaseHead title={config?.SEOTitle} description={config?.SEODescription} />
+  <body>
+    <slot />
+  </body>
+</html>

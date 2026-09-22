@@ -1,7 +1,8 @@
 import type { IslandRegistry } from '@tinacms/astro/experimental';
 import type { QueryResult } from '@tinacms/astro/data';
 import type { PagesQuery } from '../../tina/__generated__/types';
-import Hero from '../components/Hero.astro';
+import type { CmsPage } from './data';
+import PageBody from '../components/islands/PageBody.astro';
 import { getPage, getConfig } from './data';
 
 export const islands: IslandRegistry = {
@@ -15,15 +16,10 @@ export const islands: IslandRegistry = {
   // },
   page: {
     fetch: (_request, params) => getPage(params.get('slug') ?? 'home'),
-    component: Hero,
+    component: PageBody,
     wrapper: { tag: 'main' },
-    propsFromData: (data) => {
-      const pages = (data as QueryResult<PagesQuery>).data?.pages;
-      return {
-        heading: pages?.title || '',
-        subheading: pages?.sections?.[0]?.subheading || '',
-        image: pages?.sections?.[0]?.image || '',
-      };
-    },
+    propsFromData: (data) => ({
+      data: (data as QueryResult<PagesQuery>).data?.pages as CmsPage | undefined,
+    }),
   },
 };

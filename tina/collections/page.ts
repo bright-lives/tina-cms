@@ -4,6 +4,10 @@ export const PageCollection: Collection = {
   name: "pages",
   label: "Pages",
   path: "content/pages",
+  ui: {
+    router: ({ document }) =>
+      document._sys.filename === "homepage" ? "/" : `/${document._sys.filename}`,
+  },
   fields: [
     {
       type: "string",

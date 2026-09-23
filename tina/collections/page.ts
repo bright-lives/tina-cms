@@ -1,4 +1,5 @@
 import type {Collection} from "tinacms";
+import { buttonFields, buttonTemplate } from "./button";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -33,8 +34,13 @@ export const PageCollection: Collection = {
                 { name: 'alt', label: 'Alt Text', type: 'string' },
               ],
             },
+            {
+              type: 'object', label: 'Button', name: 'button',
+              fields: buttonFields,
+            },
           ],
         },
+        buttonTemplate,
       ],
     },
   ],

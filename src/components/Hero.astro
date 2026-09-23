@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { HeroSection } from '../lib/data';
+import Button from './Button.astro';
 
 interface Props { data: HeroSection }
 
@@ -12,6 +13,11 @@ const { data } = Astro.props;
   <div class="hero-content">
     <h1>{data.heading}</h1>
     <p>{data.subheading}</p>
+    {data.button?.text && (
+      <div data-tina-field={tinaField(data, 'button')}>
+        <Button data={data.button} />
+      </div>
+    )}
   </div>
   <div data-tina-field={tinaField(data, 'image')} class="mx-auto mb-6 size-56 md:size-72">
     {data.image?.src

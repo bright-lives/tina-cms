@@ -3,6 +3,7 @@ import { tinaField } from '@tinacms/astro/tina-field';
 import ConstellationDivider from '../space/ConstellationDivider.astro';
 
 import Hero from '../Hero.astro';
+import Button from '../Button.astro';
 
 import type { CmsPage } from '../../lib/data';
 
@@ -17,6 +18,7 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
   const rendered = (() => {
     switch (section.__typename) {
       case 'PagesSectionsHero': return <Hero data={section} />;
+      case 'PagesSectionsButton': return <Button data={section} />;
       }
     })();
   return (

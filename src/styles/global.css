@@ -3,10 +3,10 @@
 
 @theme {
   /* Fonts — mirrors bright-lives (WordPress) src/tailwind.css */
-  --font-sans: 'Lato', sans-serif;
-  --font-serif: 'Merriweather', serif;
-  --font-heading: 'Merriweather', serif;
-  --font-display: 'Merriweather', serif;
+  --font-sans: 'Lato';
+  --font-serif: 'Merriweather';
+  --font-heading: 'Merriweather';
+  --font-display: 'Merriweather';
 
   /* Colors */
   --color-primary-100: #F8C4E3;
@@ -40,17 +40,17 @@
 .prose h1 {
   font-size: 2.25rem;
   line-height: 1.5;
-  font-family: var(--font-serif) 'serif';
+  font-family: var(--font-serif), 'serif';
   margin-bottom: 1.5rem;
 }
 
 .prose h2 {
   font-size: 1.5rem;
   line-height: 1.5;
-  font-family: var(--font-serif) 'serif';
+  font-family: var(--font-serif), 'serif';
   margin-bottom: 1.5rem;
 }
 
 .prose p {
-  font-family: var(--font-sans) 'serif';
+  font-family: var(--font-sans), 'sans-serif';
 }

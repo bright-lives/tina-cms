@@ -2,7 +2,6 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Fonts — mirrors bright-lives (WordPress) src/tailwind.css */
   --font-sans: 'Lato';
   --font-serif: 'Merriweather';
   --font-heading: 'Merriweather';
@@ -27,6 +26,9 @@
   --color-secondary-800: #122A36;
   --color-secondary-900: #1A2A32;
 
+  --background-image-radial-gradient: radial-gradient(circle at top left, #F8C4E3, #3C1A2A);
+  --background-image-radial-gradient-opacity: radial-gradient(circle at top left, rgba(248, 196, 227, 0.5), rgba(60, 26, 42, 0.5));
+
   /* Breakpoints */
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;
@@ -35,8 +37,21 @@
   --breakpoint-2xl: 96rem;
 }
 
-/* Prose overrides — mirrors bright-lives (WordPress) tailwind.config.js
-   theme.extend.typography.DEFAULT.css */
+@layer components {
+  .heading-1 { @apply text-3xl md:text-4xl lg:text-5xl font-bold; }
+  .heading-2 { @apply text-2xl md:text-3xl lg:text-4xl font-bold; }
+  .body-text { @apply text-base md:text-lg leading-relaxed; }
+
+  .hero-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl tracking-tight;
+    font-family: var(--font-heading), 'serif';
+  }
+  .hero-body {
+    @apply text-lg md:text-xl lg:text-2xl leading-relaxed;
+    font-family: var(--font-sans), 'sans-serif';
+  }
+}
+
 .prose h1 {
   font-size: 2.25rem;
   line-height: 1.5;

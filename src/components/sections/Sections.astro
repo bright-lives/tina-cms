@@ -1,8 +1,7 @@
 ---
 import { tinaField } from '@tinacms/astro/tina-field';
-import ConstellationDivider from '../space/ConstellationDivider.astro';
 
-import Hero from '../Hero.astro';
+import Hero from '../hero/Hero.astro';
 import LinkButton from '../link-button/LinkButton.astro';
 
 import type { CmsPage } from '../../lib/data';
@@ -20,7 +19,7 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
       case 'PagesSectionsHero': return <Hero data={section} />;
       case 'PagesSectionsButton': return section.url && <LinkButton data={{...section, url: section.url}} />;
       default: return null;
-      }
-    })();
+    }
+  })();
   return <div data-tina-field={tinaField(section)} class={rendered ? undefined : 'min-h-8'}>{rendered}</div>;
 })}

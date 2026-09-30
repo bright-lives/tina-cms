@@ -1,6 +1,6 @@
 import type { TinaField } from "tinacms";
 
-export const buttonFields: TinaField[] = [
+export const linkButtonFields: TinaField[] = [
   {
     type: "string",
     name: "text",
@@ -18,7 +18,7 @@ export const buttonFields: TinaField[] = [
     options: [
       { label: "Fill", value: "fill" },
       { label: "Outline", value: "outline" },
-      { label: "Text", value: "text" },
+      { label: "Text only", value: "textOnly" },
     ],
   },
   {
@@ -32,8 +32,8 @@ export const buttonFields: TinaField[] = [
   },
 ];
 
-export const buttonTemplate = {
-  label: "Button",
+export const linkButtonTemplate = {
+  label: "Link Button",
   name: "button",
-  fields: buttonFields,
+  fields: [...linkButtonFields],
 };

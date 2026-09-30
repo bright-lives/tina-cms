@@ -1,5 +1,6 @@
 import { requestWithMetadata } from '@tinacms/astro/data';
 import client from '../../tina/__generated__/client';
+import type { PagesSectionsButton } from '../../tina/__generated__/types';
 
 export const getConfig = () =>
   requestWithMetadata(client.queries.config({ relativePath: 'config.json' }));
@@ -19,10 +20,6 @@ export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];
 // Shared shape for the Button field group, used both as a standalone section
 // (PagesSectionsButton) and nested inside other sections (e.g. Hero's `button`
 // field, PagesSectionsHeroButton) — those are distinct generated types with
-// the same structure, so Button.astro is typed against this instead.
-export type ButtonData = {
-  text?: string | null;
-  url?: string | null;
-  style?: string | null;
-  variant?: string | null;
-};
+// the same structure, so Button.astro is typed against this generated type
+// (via structural typing) rather than a hand-duplicated one.
+export type ButtonData = Pick<PagesSectionsButton, 'text' | 'url' | 'style' | 'variant'>;

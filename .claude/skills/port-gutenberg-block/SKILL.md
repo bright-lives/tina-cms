@@ -103,8 +103,15 @@ A comment noting *why* a hand-written type exists (nested field groups get
 distinct generated types depending on where they're embedded, so a shared
 type is used instead) saves the next port from re-deriving this.
 
-## Step 6 — Astro component: `src/components/[name].astro`
+## Step 6 — Astro component: `src/components/[name]/`
 
+Organize each component in its own subdirectory under `src/components/`:
+- `[name]/[Name].astro` — the component itself.
+- `[name]/[name].ts` — Tina field definitions (for nested blocks) or other TypeScript configuration.
+
+Example: `src/components/link-button/LinkButton.astro` and `src/components/link-button/link-button.ts`.
+
+Within the Astro component:
 - `Props { data: [name]Data }` (or the generated section type).
 - Mirror `save.js`'s markup, not `edit.js`'s.
 - Port the `style.js`/`utils.js` class logic. Tailwind v3 JS-config tokens
@@ -142,6 +149,7 @@ if possible, the Tina sidebar's click-to-edit on the new field.
 
 ## Gotchas learned so far (add to this as future ports surface new ones)
 
+- **Component organization**: Place each component in its own subdirectory (`src/components/[name]/`) with the Astro component and any related TypeScript files (field definitions, utilities) together. This keeps component-related code colocated and makes imports clearer.
 - `edit.js` is editor-only — porting it produces an over-built Astro
   component. Only `save.js` renders on the frontend.
 - Forgetting the `data-tina-field` wrapper on a nested field is silent —

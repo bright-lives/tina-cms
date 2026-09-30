@@ -14,7 +14,7 @@ const { data } = Astro.props;
     <h1>{data.heading}</h1>
     <p>{data.subheading}</p>
     <div data-tina-field={tinaField(data, 'button')}>
-      {data.button && <LinkButton data={data.button} />}
+      {data.button && data.button.url && <LinkButton data={{...data.button, url: data.button.url}} />}
     </div>
   </div>
   <div data-tina-field={tinaField(data, 'image')} class="mx-auto mb-6 size-56 md:size-72">

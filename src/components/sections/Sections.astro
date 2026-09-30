@@ -14,18 +14,13 @@ interface Props {
 const { data } = Astro.props;
 const sections = (data?.sections ?? []).filter(s => s !== null);
 ---
-{sections.map((section, i) => {
+{sections.map((section) => {
   const rendered = (() => {
     switch (section.__typename) {
       case 'PagesSectionsHero': return <Hero data={section} />;
-      case 'PagesSectionsButton': return <LinkButton data={section} />;
+      case 'PagesSectionsButton': return section.url && <LinkButton data={{...section, url: section.url}} />;
       default: return null;
       }
     })();
-  return (
-  <>
-    <div data-tina-field={tinaField(section)} class={rendered ? undefined : 'min-h-8'}>{rendered}</div>
-    {i < sections.length - 1 && <ConstellationDivider class="my-2 opacity-70" />}
-  </>
-    );
-  })}
+  return <div data-tina-field={tinaField(section)} class={rendered ? undefined : 'min-h-8'}>{rendered}</div>;
+})}

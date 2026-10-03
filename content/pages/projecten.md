@@ -33,6 +33,7 @@ sections:
       Hier studeren, spelen, wassen, eten en slapen de meisjes in het Child Support programma in
       een veilige omgeving.
     imageUrl: /PA230236-scaled.jpg
+    backgroundGradient: true
     _template: highlight
   - facts:
       - title: Kinderopvang en Educatie

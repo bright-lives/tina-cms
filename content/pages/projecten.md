@@ -97,5 +97,33 @@ sections:
     imageUrl: /PA230079-scaled.jpg
     backgroundGradient: false
     _template: highlight
+  - costs:
+      title: Projectkosten
+      rows:
+        - kind: Onderwijs
+          item: Schoolgeld
+          amount: 12
+          unitPrice: 150
+        - kind: Onderwijs
+          item: Schooluniformen
+          amount: 12
+          unitPrice: 35
+        - kind: Zorg
+          item: Basiszorgverzekering
+          amount: 12
+          unitPrice: 25
+    explainer:
+      title: Help mee
+      description: Met jouw bijdrage maken we onderwijs en zorg mogelijk voor de meisjes in de Wa Yiri Residence.
+      progressBar:
+        start: 0
+        end: 2520
+        current: 900
+      button:
+        text: Doneer nu
+        url: /doneren
+        style: outline
+        variant: inverted
+    _template: calculator
 ---
 

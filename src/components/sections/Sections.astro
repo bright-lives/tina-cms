@@ -9,6 +9,7 @@ import SectionDisplayData from '../section-display-data/SectionDisplayData.astro
 import SectionDonate from '../section-donate/SectionDonate.astro';
 import SectionIntro from '../section-intro/SectionIntro.astro';
 import SectionFacts from '../section-facts/SectionFacts.astro';
+import SectionCalculator from '../section-calculator/SectionCalculator.astro';
 
 import type { CmsPage } from '../../lib/data';
 
@@ -30,6 +31,7 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
       case 'PagesSectionsDonate': return <SectionDonate data={section} />;
       case 'PagesSectionsIntro': return <SectionIntro data={section} />;
       case 'PagesSectionsFacts': return <SectionFacts data={section} />;
+      case 'PagesSectionsCalculator': return <SectionCalculator data={section} />;
       default: return null;
     }
   })();

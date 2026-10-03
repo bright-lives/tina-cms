@@ -175,5 +175,18 @@ if possible, the Tina sidebar's click-to-edit on the new field.
   (`@tailwindcss/typography` is installed); use `prose-xl` etc. rather than
   `text-xl`, since `prose` sets its own font-size.
 
+- A block's directory name doesn't always match its registered name — e.g.
+  `wp-block-bright-lives-section-calculator` lives in
+  `src/blocks/section-calculation-overview/` (`block.json` `name` is
+  `bright-lives/section-calculator`). If the directory isn't found, grep
+  `block.json` files for the name.
+- When a section's `edit.js` uses `templateLock` with a fixed
+  `INNER_BLOCK_TEMPLATE` (as section-calculator → column-project-costs →
+  table-calculation does), the composition can never change, so flatten the
+  inner blocks into fixed nested `object` fields on the one section rather
+  than porting each as its own section. Derived attributes (e.g.
+  table-calculation's `totalPrice`, computed from `rows` in `edit.js`) are
+  computed in the component, not stored as fields.
+
 When a future port reveals a new gotcha, add it here rather than letting it
 live only in that conversation — that's the point of this file.

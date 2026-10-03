@@ -1,0 +1,103 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionCalculatorSection } from "../../lib/data";
+import LinkButton from "../link-button/LinkButton.astro";
+
+interface Props {
+  data: SectionCalculatorSection;
+}
+
+const { data } = Astro.props;
+const { costs, explainer } = data;
+const rows = (costs?.rows ?? []).filter((row) => row !== null);
+const subtotal = (row: (typeof rows)[number]) => (row.amount ?? 0) * (row.unitPrice ?? 0);
+const totalPrice = rows.reduce((total, row) => total + subtotal(row), 0);
+
+// Dutch currency, ",00" → ",-" + non-breaking space.
+const convertToLocalCurrency = (amount: number) =>
+  amount
+    .toLocaleString("nl-NL", { style: "currency", currency: "EUR" })
+    .replace(",00", ",- ");
+
+const progressBar = explainer?.progressBar;
+const start = progressBar?.start ?? 0;
+// `end` is always the project costs total (the Tina field is read-only and kept in sync).
+const end = totalPrice;
+const current = progressBar?.current ?? 20;
+const progress = end > start ? Math.min(100, Math.max(0, ((current - start) / (end - start)) * 100)) : 0;
+
+const th = "pb-3";
+const td = "py-3";
+---
+
+<section class="my-24 py-20 bg-gray-200 px-8 md:px-0">
+  <div class="container mx-auto items-center grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="w-full" data-tina-field={tinaField(data, "costs")}>
+      {costs?.title && (
+        <h2 class="text-2xl leading-normal font-serif mb-12" data-tina-field={tinaField(costs, "title")}>
+          {costs.title}
+        </h2>
+      )}
+      <table class="table-auto w-full text-sm" data-tina-field={costs ? tinaField(costs, "rows") : undefined}>
+        <thead>
+          <tr class="text-left">
+            <th class={th}>Soort</th>
+            <th class={th}>Artikelen</th>
+            <th class={th}>Aantal</th>
+            <th class={th}>Stuk prijs</th>
+            <th class={`${th} text-right`}>Subtotaal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr class="border-t border-primary-500" data-tina-field={tinaField(row)}>
+              <td class={td}>{row.kind}</td>
+              <td class={td}>{row.item}</td>
+              <td class={td}>{row.amount}</td>
+              <td class={td}>{row.unitPrice}</td>
+              <td class="py-3 text-right align-middle w-28">{convertToLocalCurrency(subtotal(row))}</td>
+            </tr>
+          ))}
+          <tr class="border-t-2 border-primary-500 mt-4">
+            <td colspan={4} class="align-middle py-4 font-bold">Totaal</td>
+            <td class="align-middle py-3 text-right w-28 tabular-nums slashed-zero font-bold font-mono">
+              {convertToLocalCurrency(totalPrice)}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    {explainer && (
+      <article class="p-20 bg-primary-500" data-tina-field={tinaField(data, "explainer")}>
+        <div class="mb-10">
+          <h3
+            class="text-2xl leading-normal font-serif break-words hyphens-auto font-heading text-white"
+            data-tina-field={tinaField(explainer, "title")}
+          >
+            {explainer.title}
+          </h3>
+          <h3 class="font-sans text-white my-10" data-tina-field={tinaField(explainer, "description")}>
+            {explainer.description}
+          </h3>
+        </div>
+        {progressBar && (
+          <div class="w-full max-w-lg mb-20" data-tina-field={tinaField(explainer, "progressBar")}>
+            <div class="bg-gray-300 rounded-full h-4">
+              <div class="bg-amber-400 h-4 rounded-full animate-pulse" style={`width: ${progress}%;`}></div>
+              <div class="flex justify-between my-2">
+                <span class="text-white">{convertToLocalCurrency(start)}</span>
+                <span class="text-white">{convertToLocalCurrency(end)}</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {explainer.button && (
+          <div data-tina-field={tinaField(explainer, "button")}>
+            <LinkButton data={explainer.button} />
+          </div>
+        )}
+      </article>
+    )}
+  </div>
+</section>

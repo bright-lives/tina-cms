@@ -1,0 +1,23 @@
+---
+// Mirrors bright-lives-blocks/section-intro/save.js + style.js (+ __components__/common-style.js headings.section)
+import { tinaField } from "@tinacms/astro/tina-field";
+import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
+import type { SectionIntroSection } from "../../lib/data";
+
+interface Props {
+  data: SectionIntroSection;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 px-10 md:px-0">
+  <div class="items-center py-24">
+    <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+    <div class="prose prose-xl font-sans font-bold" data-tina-field={tinaField(data, "intro")}>
+      <TinaMarkdown content={data.intro} />
+    </div>
+  </div>
+</section>

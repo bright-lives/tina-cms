@@ -34,6 +34,11 @@ export type SectionDonateSection = Extract<
   { __typename: 'PagesSectionsDonate' }
 >;
 
+export type SectionIntroSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsIntro' }
+>;
+
 export type FooterConfig = NonNullable<
   NonNullable<Awaited<ReturnType<typeof getConfig>>['data']['config']>['footer']
 >;

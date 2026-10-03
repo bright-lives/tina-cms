@@ -166,5 +166,14 @@ if possible, the Tina sidebar's click-to-edit on the new field.
   own `<p>`, so put the WP `<p>` classes on a wrapping `<div>` and style
   links with `[&_a]:…` variants. In seed markdown, a trailing `\` makes a `<br>`.
 
+- Changing an existing field's `type` (e.g. `string` → `rich-text`) is not
+  picked up by a running `tinacms dev` — the generated types and GraphQL
+  responses keep the old type, and `TinaMarkdown` silently renders nothing.
+  Restart the dev server after schema type changes. Plain markdown with
+  blank lines between paragraphs is valid `rich-text` content as-is.
+- For multi-paragraph rich text, wrap `TinaMarkdown` in a `prose` div
+  (`@tailwindcss/typography` is installed); use `prose-xl` etc. rather than
+  `text-xl`, since `prose` sets its own font-size.
+
 When a future port reveals a new gotcha, add it here rather than letting it
 live only in that conversation — that's the point of this file.

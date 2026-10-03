@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { HeroSection } from '../../lib/data';
 import LinkButton from '../link-button/LinkButton.astro';
@@ -18,13 +17,18 @@ const { data } = Astro.props;
       </div>
     </div>
   </div>
-  <!--<div data-tina-field={tinaField(data, 'image')} class="mx-auto mb-6 size-56 md:size-72">-->
-  <!--  {data.image?.src-->
-  <!--    ? <Image src={data.image.src} alt={data.image.alt ?? ''} width={576} height={576} sizes="(min-width: 768px) 288px, 224px" format="webp" quality={80} fetchpriority="high" loading="eager" decoding="async" class="size-full rounded-full object-cover" />-->
-  <!--    : ''}-->
-  <!--</div>-->
   <div class="[grid-area:stack] bg-radial-gradient-opacity z-10" />
-  <div class="[grid-area:stack] z-0">
-    <div class="bg-radial-gradient-opacity min-h-107.5 h-60vh max-h-125" />
+  <div class="[grid-area:stack] z-0 relative" data-tina-field={tinaField(data, 'image')}>
+    {data.image?.src && (
+      <img
+        src={data.image.src}
+        alt={data.image.alt ?? ''}
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        class="absolute inset-0 size-full object-cover object-center"
+      />
+    )}
+    <div class="relative bg-radial-gradient-opacity min-h-107.5 h-60vh max-h-125" />
   </div>
 </section>

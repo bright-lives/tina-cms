@@ -9,6 +9,11 @@
       "label": "Over ons",
       "page": "content/pages/over-ons.md",
       "order": 1
+    },
+    {
+      "label": "Doneren",
+      "page": "content/pages/doneren.md",
+      "order": 3
     }
   ]
 }

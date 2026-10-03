@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "label": "Projecten",
+      "page": "content/pages/projecten.md",
+      "order": 2
+    },
+    {
+      "label": "Over ons",
+      "page": "content/pages/over-ons.md",
+      "order": 1
+    }
+  ]
+}

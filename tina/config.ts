@@ -2,6 +2,7 @@ import { defineConfig } from "tinacms";
 import {GlobalConfigCollection} from "./collections/global-config.ts";
 import {PageCollection} from "./collections/page.ts";
 import {PostCollection} from "./collections/post.ts";
+import {MenuCollection} from "./collections/menu.ts";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -40,6 +41,7 @@ export default defineConfig({
       GlobalConfigCollection,
       PostCollection,
       PageCollection,
+      MenuCollection,
     ],
   },
 });

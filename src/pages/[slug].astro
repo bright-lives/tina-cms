@@ -1,0 +1,36 @@
+---
+import { readdirSync } from 'fs';
+import { join } from 'path';
+import Base from '../layouts/Base.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import { getPage } from '../lib/data';
+import { islands } from '../lib/islands';
+import PageBody from "../components/islands/PageBody.astro";
+
+export async function getStaticPaths() {
+  const pagesDir = join(process.cwd(), 'content/pages');
+  const files = readdirSync(pagesDir);
+
+  const paths = files
+    .filter(file => file.endsWith('.md') && file !== 'homepage.md')
+    .map(file => ({
+      params: { slug: file.replace('.md', '') },
+    }));
+
+  return paths;
+}
+
+const { slug } = Astro.params;
+const page = await getPage(slug);
+const data = page.data?.pages;
+
+if (!data) {
+  return new Response(`${slug} not found`, { status: 404 });
+}
+---
+
+<Base>
+  <TinaIsland name="page" wrapper={islands.page.wrapper} params={{ slug }} primary>
+    <PageBody data={data} />
+  </TinaIsland>
+</Base>

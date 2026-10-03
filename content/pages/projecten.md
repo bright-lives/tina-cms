@@ -60,5 +60,42 @@ sections:
 
           Het is essentieel om deze sociale problemen aan te pakken en ondersteuning te bieden aan kwetsbare kinderen en meisjes om hun toekomstperspectieven te verbeteren en hen te beschermen tegen uitbuiting en ongelijkheid.
     _template: facts
+  - title: Uitdagingen voor Kinderen in Ghana
+    columns:
+      - title: Onderwijs
+        content: |-
+          Overvolle klaslokalen en slecht opgeleide docenten zorgen voor onderwijs
+          van lage kwaliteit. Veel kinderen maken om die reden hun school nooit af.
+      - title: Kindhuwelijken
+        content: |-
+          Veel meisjes in Ghana worden op jonge leeftijd uitgehuwelijkt,
+          wat hun kansen op onderwijs en persoonlijke ontwikkeling beperkt.
+      - title: Tienerzwangerschappen
+        content: 'Tienerzwangerschappen komen veel voor in Ghana, vaak als gevolg van een gebrek aan seksuele voorlichting en middelen voor gezinsplanning'
+      - title: Financiële afhankelijkheid
+        content: 'Financiëel afhankelijk van families of echtgenoten, wat vrijheid en mogelijkheden beperkt.'
+      - title: Gelijke rechten voor meisjes en vrouwen
+        content: 'Hoewel er vooruitgang is geboekt, hebben meisjes en vrouwen in Ghana nog steeds te maken met discriminatie en ongelijke rechten.'
+      - title: Hygiëne
+        content: Gebrek aan toegang tot schoon water en sanitaire voorzieningen leidt tot ziekte en gezondheidsproblemen.
+      - title: Sexuele uitbuiting
+        content: 'Meisjes in Ghana lopen een hoog risico op seksuele uitbuiting en misbruik, vooral in stedelijke gebieden.'
+      - title: Arbeidsuitbuiting
+        content: 'Onder slechte omstandigheden werken, vaak zonder fatsoenlijk loon of bescherming.'
+      - title: Criminele uitbuiting
+        content: Kwetsbare kinderen lopen een hoog risico om te worden gerekruteerd door criminele organisaties.
+      - title: Gezondheidszorg
+        content: Gebrek aan toegang tot medische zorg en gezondheidsvoorzieningen leidt tot ziekte en sterfte.
+    _template: standoutColumns
+  - title: Realiseren campus
+    content: |-
+      In de beginjaren van onze stichting hebben we extra gebouwen laten neerzetten die nu helaas leegstaan en ongebruikt zijn. We geloven dat het niet voldoende is om, zoals vroeger, alleen opvang voor kinderen te bieden. In plaats daarvan streven we ernaar om hen scholing te geven, gecombineerd met de mogelijkheid tot tijdelijk verblijf gedurende de week.
+
+      Ons doel is om kwalitatief goed onderwijs aan kansarmen in de regio te bieden en zo inkomsten te genereren om ons programma in Ghana zelfvoorzienend te maken. We plannen een campus met een basisschool, administratiekantoor, opslagruimten, sanitaire voorzieningen, speelplaats, en verblijven voor personeel en sommige leerlingen.
+
+      Dit project is essentieel omdat het huidige onderwijsniveau te laag is voor kinderen om goede kansen te krijgen. Daarnaast is het programma-afhankelijk van Nederlandse financiering, wat het kwetsbaar maakt. We willen het programma financieel zelfvoorzienend maken, wat de continuïteit waarborgt en alle betrokkenen in Ghana ten goede komt.
+    imageUrl: /PA230079-scaled.jpg
+    backgroundGradient: false
+    _template: highlight
 ---
 

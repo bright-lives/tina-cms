@@ -16,7 +16,7 @@ export type HeroSection = Extract<PageSections, { __typename: 'PagesSectionsHero
 
 export type SectionHighlightSection = Extract<
   PageSections,
-  { __typename: 'PagesSectionsSectionHighlight' }
+  { __typename: 'PagesSectionsHighlight' }
 >;
 
 export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];

@@ -25,6 +25,5 @@ sections:
         url: /projecten
         style: outline
         variant: normal
-    _template: sectionHighlight
+    _template: highlight
 ---
-

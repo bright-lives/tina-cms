@@ -1,7 +1,7 @@
 ---
 import { tinaField } from '@tinacms/astro/tina-field';
 
-import Hero from '../section-hero/Hero.astro';
+import Hero from '../section-hero/SectionHero.astro';
 import LinkButton from '../link-button/LinkButton.astro';
 import SectionHighlight from '../section-highlight/SectionHighlight.astro';
 
@@ -19,7 +19,7 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
     switch (section.__typename) {
       case 'PagesSectionsHero': return <Hero data={section} />;
       case 'PagesSectionsButton': return <LinkButton data={section} />;
-      case 'PagesSectionsSectionHighlight': return <SectionHighlight data={section} />;
+      case 'PagesSectionsHighlight': return <SectionHighlight data={section} />;
       default: return null;
     }
   })();

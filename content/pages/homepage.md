@@ -21,6 +21,7 @@ sections:
     backgroundGradient: true
     buttons:
       - text: Meer over onze missie
+        page: content/pages/over-ons.md
         url: /projecten
         style: outline
         variant: normal

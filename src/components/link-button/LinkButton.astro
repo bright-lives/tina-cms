@@ -2,10 +2,13 @@
 import { tinaField } from '@tinacms/astro/tina-field';
 import type { ButtonData } from '../../lib/data';
 
-interface Props { data: Omit<ButtonData, 'url'> & { url: string } }
+interface Props { data: ButtonData }
 
 const { data } = Astro.props;
-const { text, url } = data;
+const { text, page } = data;
+const url = page
+  ? page._sys.filename === 'homepage' ? '/' : `/${page._sys.filename}`
+  : data.url;
 const style = data.style ?? 'fill';
 const variant = data.variant ?? 'normal';
 
@@ -27,8 +30,8 @@ const stylesMap: Record<string, Record<string, string>> = {
 const linkClass = `group inline-flex w-auto min-w-56 font-serif ${stylesMap[style]?.[variant] ?? stylesMap.fill.normal}`;
 ---
 
-{text && (
-  <a href={url} class={linkClass} data-tina-field={tinaField(data, 'url')}>
+{text && url && (
+  <a href={url} class={linkClass} data-tina-field={tinaField(data, page ? 'page' : 'url')}>
     <span class="flex" data-tina-field={tinaField(data, 'text')}>{text}</span>
     <span class="flex ml-auto items-center pl-2 transition-all duration-300 ease-in-out group-hover:pl-4">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">

@@ -1,6 +1,5 @@
 import { requestWithMetadata } from '@tinacms/astro/data';
 import client from '../../tina/__generated__/client';
-import type { PagesSectionsButton } from '../../tina/__generated__/types';
 
 export const getConfig = () =>
   requestWithMetadata(client.queries.config({ relativePath: 'config.json' }));
@@ -25,6 +24,12 @@ export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];
 // Shared shape for the Button field group, used both as a standalone section
 // (PagesSectionsButton) and nested inside other sections (e.g. Hero's `button`
 // field, PagesSectionsHeroButton) — those are distinct generated types with
-// the same structure, so Button.astro is typed against this generated type
-// (via structural typing) rather than a hand-duplicated one.
-export type ButtonData = Pick<PagesSectionsButton, 'text' | 'url' | 'style' | 'variant'>;
+// the same structure. Only the referenced page's routing metadata is needed.
+type ButtonSection = Extract<PageSections, { __typename: 'PagesSectionsButton' }>;
+
+export type ButtonData = Pick<
+  ButtonSection,
+  'text' | 'url' | 'style' | 'variant'
+> & {
+  page?: Pick<NonNullable<ButtonSection['page']>, '_sys'> | null;
+};

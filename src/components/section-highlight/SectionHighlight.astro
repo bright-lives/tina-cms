@@ -24,8 +24,8 @@ const backgroundGradient = data.backgroundGradient ?? true;
           {data.content}
         </p>
         <div data-tina-field={tinaField(data, "buttons")}>
-          {data.buttons?.filter((button) => button?.url).map((button) => button && button.url && (
-            <LinkButton data={{ ...button, url: button.url }} />
+          {data.buttons?.map((button) => button && (
+            <LinkButton data={button} />
           ))}
         </div>
       </div>

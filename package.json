@@ -25,6 +25,8 @@
     "@tinacms/astro": "^0.7.0",
     "@tinacms/cli": "^3.0.0",
     "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "react": "^19.3.0",
     "tailwindcss": "^4.3.3",
     "tinacms": "^3.14.0"
   }

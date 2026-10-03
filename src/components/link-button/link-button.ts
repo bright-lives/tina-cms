@@ -1,4 +1,5 @@
 import type { TinaField } from "tinacms";
+import { ManualUrlField } from "./ManualUrlField";
 
 export const linkButtonFields: TinaField[] = [
   {
@@ -7,9 +8,20 @@ export const linkButtonFields: TinaField[] = [
     label: "Text",
   },
   {
+    type: "reference",
+    name: "page",
+    label: "Select Page",
+    collections: ["pages"],
+    description: "Select a CMS page, or leave empty to use the manual URL below.",
+  },
+  {
     type: "string",
     name: "url",
     label: "URL",
+    description: "Manual link (for example, an external URL). Disabled while a CMS page is selected.",
+    ui: {
+      component: ManualUrlField,
+    },
   },
   {
     type: "string",

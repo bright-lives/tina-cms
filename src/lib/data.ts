@@ -34,7 +34,11 @@ export type SectionDonateSection = Extract<
   { __typename: 'PagesSectionsDonate' }
 >;
 
-export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];
+export type FooterConfig = NonNullable<
+  NonNullable<Awaited<ReturnType<typeof getConfig>>['data']['config']>['footer']
+>;
+
+export type CmsPage =Awaited<ReturnType<typeof getPage>>['data']['pages'];
 
 // Shared shape for the Button field group, used both as a standalone section
 // (PagesSectionsButton) and nested inside other sections (e.g. Hero's `button`

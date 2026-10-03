@@ -14,6 +14,6 @@ const config = (await getConfig()).data?.config ?? null;
   <PageHeader />
   <body>
     <slot />
-    <PageFooter />
+    <PageFooter data={config?.footer} />
   </body>
 </html>

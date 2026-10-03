@@ -1,4 +1,18 @@
 {
   "SEOTitle": "Bright lives",
-  "SEODescription": "This is a description"
+  "SEODescription": "This is a description",
+  "footer": {
+    "newsletterTitle": "Schrijf je in:",
+    "newsletterFormAction": "https://childsupport-ghana.us3.list-manage.com/subscribe/post?u=98966cf77e95c0813f0aa32a5&id=7c152cbcab&f_id=009637e2f0",
+    "newsletterPlaceholder": "e-mail@provider.nl",
+    "newsletterButtonText": "Inschrijven",
+    "contactTitle": "Contact:",
+    "addressLines": [
+      "Prinses Beatrixlaan 170",
+      "2286 LE Rijswijk",
+      "Nederland"
+    ],
+    "email": "info@bright-lives.nl",
+    "copyright": "Bright Lives"
+  }
 }

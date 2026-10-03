@@ -2,6 +2,7 @@ import type {Collection} from "tinacms";
 import { linkButtonFields, linkButtonTemplate } from "../../src/components/link-button/link-button";
 import { sectionHighlightTemplate } from "../../src/components/section-highlight/section-highlight";
 import { sectionStandoutColumnsTemplate } from "../../src/components/section-standout-columns/section-standout-columns";
+import { sectionDisplayDataTemplate } from "../../src/components/section-display-data/section-display-data";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -45,6 +46,7 @@ export const PageCollection: Collection = {
         linkButtonTemplate,
         sectionHighlightTemplate,
         sectionStandoutColumnsTemplate,
+        sectionDisplayDataTemplate,
       ],
     },
   ],

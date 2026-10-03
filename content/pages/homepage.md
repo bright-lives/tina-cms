@@ -35,5 +35,17 @@ sections:
       - title: Betrokkenheid mogelijk maken
         content: 'We verbinden mensen, fondsen en organisaties die willen bijdragen aan de kracht van kinderen. Samen zorgen we voor impact die verder reikt dan vandaag.'
     _template: standoutColumns
+  - title: Impact in Cijfers
+    content: 'Deze cijfers illustreren onze toewijding aan kwalitatief onderwijs en zorg voor kwetsbare kinderen in Wa, en onderstrepen de noodzaak van een veilige en ondersteunende omgeving voor hun ontwikkeling.'
+    items:
+      - amount: '1023'
+        title: Kinderen in het programma
+      - amount: '20'
+        title: ''
+      - amount: '100'
+        title: Klaslokalen
+      - amount: '4'
+        title: Slaapvertrekken
+    _template: displayData
 ---
 

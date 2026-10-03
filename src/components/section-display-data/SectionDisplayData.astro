@@ -1,0 +1,37 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionDisplayDataSection } from "../../lib/data";
+
+// Mirrors bright-lives-blocks/section-display-data/save.js.
+interface Props {
+  data: SectionDisplayDataSection;
+}
+
+const { data } = Astro.props;
+const items = (data.items ?? []).filter((item) => item !== null);
+---
+
+<article class="container mx-auto py-24 grid grid-cols-1 md:grid-cols-2 px-8 sm:px-0">
+  <div class="max-w-lg">
+    <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+    <p data-tina-field={tinaField(data, "content")}>
+      {data.content}
+    </p>
+  </div>
+  <div>
+    <div class="grid grid-cols-2 gap-4 mt-8 sm:mt-0" data-tina-field={tinaField(data, "items")}>
+      {items.map((item) => (
+        <div class="flex flex-col mb-5 pb-5 gap-x-4 border-b-2 border-primary-500" data-tina-field={tinaField(item)}>
+          <div class="text-6xl font-black text-primary-500 leading-tight" data-tina-field={tinaField(item, "amount")}>
+            {item.amount}
+          </div>
+          <span class="font-medium" data-tina-field={tinaField(item, "title")}>
+            {item.title}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</article>

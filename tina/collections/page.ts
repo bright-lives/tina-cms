@@ -5,6 +5,7 @@ import { sectionStandoutColumnsTemplate } from "../../src/components/section-sta
 import { sectionDisplayDataTemplate } from "../../src/components/section-display-data/section-display-data";
 import { sectionDonateTemplate } from "../../src/components/section-donate/section-donate";
 import { sectionIntroTemplate } from "../../src/components/section-intro/section-intro";
+import { sectionFactsTemplate } from "../../src/components/section-facts/section-facts";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -51,6 +52,7 @@ export const PageCollection: Collection = {
         sectionDisplayDataTemplate,
         sectionDonateTemplate,
         sectionIntroTemplate,
+        sectionFactsTemplate,
       ],
     },
   ],

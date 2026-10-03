@@ -34,5 +34,31 @@ sections:
       een veilige omgeving.
     imageUrl: /PA230236-scaled.jpg
     _template: highlight
+  - facts:
+      - title: Kinderopvang en Educatie
+        content: |
+          Het is van essentieel belang dat kinderen voldoende voeding en toegang tot kwalitatieve educatie krijgen. Tussen 2006 en 2010 had Ghana Child Support de middelen om alle kinderen op de compound te huisvesten, zelfs tijdens vakanties. De kinderen konden opgroeien in een veilige en ondersteunende omgeving, waar ze voedsel, onderdak en educatieve kansen kregen. Dit was een periode waarin de organisatie in staat was om een stabiele basis te bieden.
+
+          In 2011 moesten de kinderen op verzoek van de overheid terugkeren naar huis om zich daar ook te oriënteren op het leven. Zodra ze 18 jaar worden en Bright Lives moeten verlaten zouden ze zo min mogelijk problemen hebben met re-integreren in de samenleving. Dit zorgde ervoor dat we de kinderen terug moesten elke keer als er vakantie was. Helaas bleek dat ze bij terugkomst vaak ondervoed waren en dit gold voor alle kinderen.
+
+          Dit probleem onderstreept de noodzaak van voortdurende ondersteuning en zorg voor deze kinderen, zelfs na hun vertrek uit de opvang.
+      - title: Selectie voor opvang
+        content: |
+          Voordat een kind bij ons tehuis wordt opgenomen, screenen we zorgvuldig hun situatie. Het welzijn van het kind staat voorop.
+
+          Er zijn drie criteria: Is het kind wees? Wordt hun onderwijs bedreigd door de afwezigheid of het overlijden van een ouder?\
+          Of is de leefsituatie van beide ouders zo ernstig dat het kind niet naar school kan? Alleen als aan een van deze criteria wordt voldaan, nemen we het kind op. Momenteel hebben 5 van onze meisjes, waaronder 2 tweelingen, beide ouders nog.\
+          7 meisjes hebben één ouder, en 18 meisjes hebben beide ouders verloren.
+      - title: Gemeenschapsleven en kinderopvang
+        content: |
+          Het gemeenschapsleven in Ghana blijft sterk en levendig, vooral in de kleinere steden en dorpen in het noorden van het land. Volgens Dan Seidu is het gebruikelijk dat uitgebreide families, inclusief aangetrouwde familieleden, samenleven in een compound.
+
+          Dit versterkt de familiebanden en zorgt ervoor dat ze intact blijven. De compound wordt indien nodig uitgebreid, zodat bijvoorbeeld een man met zijn vrouw, hun zonen of dochters en hun partners, en al hun kinderen samen in één huis kunnen wonen.
+      - title: Sociale Uitdagingen voor Kinderen in Ghana
+        content: |
+          Meisjes die hun moeder verliezen en in polyamoreuze gezinnen terechtkomen, worden vaak gedwongen te stoppen met school. Ze reizen naar het zuiden om te werken als ‘Kaya Yei’. Dit zijn meisjes die goederen dragen op hun hoofd en verkopen op de markt. Dit is een gevaarlijk beroep met een minimaal inkomen en kwetsbaarheid voor misbruik en uitbuiting. Dit kan leiden tot tienerzwangerschappen en gedwongen huwelijken.
+
+          Het is essentieel om deze sociale problemen aan te pakken en ondersteuning te bieden aan kwetsbare kinderen en meisjes om hun toekomstperspectieven te verbeteren en hen te beschermen tegen uitbuiting en ongelijkheid.
+    _template: facts
 ---
 

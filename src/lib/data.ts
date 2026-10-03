@@ -39,6 +39,11 @@ export type SectionIntroSection = Extract<
   { __typename: 'PagesSectionsIntro' }
 >;
 
+export type SectionFactsSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsFacts' }
+>;
+
 export type FooterConfig = NonNullable<
   NonNullable<Awaited<ReturnType<typeof getConfig>>['data']['config']>['footer']
 >;

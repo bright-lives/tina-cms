@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import PageHeader from '../components/PageHeader.astro';
+import PageFooter from '../components/PageFooter.astro';
 import { getConfig } from '../lib/data';
 
 const config = (await getConfig()).data?.config ?? null;
@@ -13,5 +14,6 @@ const config = (await getConfig()).data?.config ?? null;
   <PageHeader />
   <body>
     <slot />
+    <PageFooter />
   </body>
 </html>

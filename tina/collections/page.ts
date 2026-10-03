@@ -3,6 +3,7 @@ import { linkButtonFields, linkButtonTemplate } from "../../src/components/link-
 import { sectionHighlightTemplate } from "../../src/components/section-highlight/section-highlight";
 import { sectionStandoutColumnsTemplate } from "../../src/components/section-standout-columns/section-standout-columns";
 import { sectionDisplayDataTemplate } from "../../src/components/section-display-data/section-display-data";
+import { sectionDonateTemplate } from "../../src/components/section-donate/section-donate";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -47,6 +48,7 @@ export const PageCollection: Collection = {
         sectionHighlightTemplate,
         sectionStandoutColumnsTemplate,
         sectionDisplayDataTemplate,
+        sectionDonateTemplate,
       ],
     },
   ],

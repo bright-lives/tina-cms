@@ -6,6 +6,7 @@ import LinkButton from '../link-button/LinkButton.astro';
 import SectionHighlight from '../section-highlight/SectionHighlight.astro';
 import SectionStandoutColumns from '../section-standout-columns/SectionStandoutColumns.astro';
 import SectionDisplayData from '../section-display-data/SectionDisplayData.astro';
+import SectionDonate from '../section-donate/SectionDonate.astro';
 
 import type { CmsPage } from '../../lib/data';
 
@@ -24,6 +25,7 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
       case 'PagesSectionsHighlight': return <SectionHighlight data={section} />;
       case 'PagesSectionsStandoutColumns': return <SectionStandoutColumns data={section} />;
       case 'PagesSectionsDisplayData': return <SectionDisplayData data={section} />;
+      case 'PagesSectionsDonate': return <SectionDonate data={section} />;
       default: return null;
     }
   })();

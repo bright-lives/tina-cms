@@ -47,5 +47,15 @@ sections:
       - amount: '4'
         title: Slaapvertrekken
     _template: displayData
+  - title: 'Waar kinderen groeien, groeit de toekomst'
+    subTitle: |
+      Steun het project dat wij versterken: Heritage Haven – een veilige plek voor kwetsbare kinderen.\
+      [Lees meer](/wat-we-doen) of doneer direct.
+    buttons:
+      - text: Doneer nu
+        url: /doneren
+        style: outline
+        variant: inverted
+    _template: donate
 ---
 

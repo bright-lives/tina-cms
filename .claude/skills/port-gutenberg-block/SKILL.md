@@ -160,5 +160,11 @@ if possible, the Tina sidebar's click-to-edit on the new field.
   form (`var(--font-serif) 'serif'`) is invalid CSS, not just a v3/v4 syntax
   difference; worth a quick check whenever `global.css` is touched.
 
+- When a `RichText` attribute holds inline links/line breaks (e.g.
+  `section-donate`'s `subTitle`), use a Tina `rich-text` field and render it
+  with `TinaMarkdown` from `@tinacms/astro/TinaMarkdown.astro`. It emits its
+  own `<p>`, so put the WP `<p>` classes on a wrapping `<div>` and style
+  links with `[&_a]:…` variants. In seed markdown, a trailing `\` makes a `<br>`.
+
 When a future port reveals a new gotcha, add it here rather than letting it
 live only in that conversation — that's the point of this file.

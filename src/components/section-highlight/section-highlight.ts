@@ -28,5 +28,6 @@ export const sectionHighlightFields: TinaField[] = [
 export const sectionHighlightTemplate = {
   label: "Section Highlight",
   name: "highlight",
+  ui: { defaultItem: { backgroundGradient: true } },
   fields: sectionHighlightFields,
 };

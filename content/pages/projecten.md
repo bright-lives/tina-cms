@@ -125,5 +125,13 @@ sections:
         style: outline
         variant: inverted
     _template: calculator
+  - title: Samenwerking voor succes in Ghana
+    content: |-
+      De activiteiten in Ghana worden nu georganiseerd door een Ghanese stichting onder leiding van de heer Daniel Seidu. Een sterke lokale organisatie draagt bij aan het succes en de continuïteit van het project. BrightLives ondersteunt de Ghanese organisatie door het werven van kindsponsors, donaties en vrijwilligers.
+
+      Vanuit Nederland bieden we op alle mogelijke manieren ondersteuning met kennis en expertise om de doelstellingen te realiseren en de kwaliteit te waarborgen. We hopen in de toekomst, met de blauwdruk van ons succes, ook elders in Ghana een verschil te maken.
+    imageUrl: /PA230053-scaled.jpg
+    backgroundGradient: false
+    _template: highlight
 ---
 

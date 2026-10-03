@@ -9,10 +9,9 @@ interface Props {
 
 const { data } = Astro.props;
 const reversed = data.orientation === "reversed";
-const backgroundGradient = data.backgroundGradient ?? true;
 ---
 
-<section class={backgroundGradient ? "bg-radial-gradient" : undefined}>
+<section class={data.backgroundGradient ? "bg-radial-gradient" : undefined}>
   <article class="container mx-auto grid grid-cols-1 md:grid-cols-2">
     <div class:list={["flex items-center sm:px-10 sm:py-20 md:py-0 md:pt-14 md:pl-0 md:pr-10", reversed && "md:order-2 md:px-20"]}>
       <div class="font-sans max-w-lg py-20 sm:pt-0 px-8 sm:px-0">

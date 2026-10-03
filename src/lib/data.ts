@@ -19,6 +19,11 @@ export type SectionHighlightSection = Extract<
   { __typename: 'PagesSectionsHighlight' }
 >;
 
+export type SectionStandoutColumnsSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsStandoutColumns' }
+>;
+
 export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];
 
 // Shared shape for the Button field group, used both as a standalone section

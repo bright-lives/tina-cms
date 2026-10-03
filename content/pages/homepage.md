@@ -26,4 +26,14 @@ sections:
         style: outline
         variant: normal
     _template: highlight
+  - title: Wat we doen
+    columns:
+      - title: Investeren in onderwijs
+        content: 'We ondersteunen kleinschalige, lokaal geleide projecten die kinderen een veilige en stimulerende omgeving bieden. Zo bouwen we mee aan blijvende verandering van binnenuit.'
+      - title: Investeren in onderwijs
+        content: 'Onderwijs is de sleutel tot een betere toekomst. We dragen bij aan schoolgeld, materialen en een plek waar kinderen kunnen leren en groeien.'
+      - title: Betrokkenheid mogelijk maken
+        content: 'We verbinden mensen, fondsen en organisaties die willen bijdragen aan de kracht van kinderen. Samen zorgen we voor impact die verder reikt dan vandaag.'
+    _template: standoutColumns
 ---
+

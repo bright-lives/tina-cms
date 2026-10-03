@@ -1,0 +1,71 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionStandoutColumnsSection } from "../../lib/data";
+import LinkButton from "../link-button/LinkButton.astro";
+
+// Mirrors bright-lives-blocks/section-standout-columns/{save,style}.js and column/{save,style}.js.
+interface Props {
+  data: SectionStandoutColumnsSection;
+}
+
+const { data } = Astro.props;
+const columns = (data.columns ?? []).filter((column) => column !== null);
+
+// WP derives amountOfColumns from the inner block count: 3, 4 or 5.
+const amountOfColumns = columns.length <= 3 ? 3 : columns.length === 4 ? 4 : 5;
+
+// Class names are spelled out in full so Tailwind can detect them.
+const gridColsMap: Record<number, string> = {
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
+};
+
+const titleContainerMap: Record<number, string> = {
+  3: "min-h-20",
+  4: "min-h-28",
+  5: "min-h-16",
+};
+
+const fourColumnBackgrounds = ["bg-primary-500", "bg-primary-600", "bg-primary-700", "bg-primary-800"];
+
+const getColumnBackgroundColor = (index: number) =>
+  amountOfColumns === 4
+    ? fourColumnBackgrounds[index]
+    : index % 2 === 0 ? "bg-primary-500" : "bg-primary-600";
+
+const titleSize = amountOfColumns === 5 ? "text-xl" : "text-2xl";
+---
+
+<section class:list={["container mx-auto", data.title && "pt-24"]}>
+  {data.title && (
+    <div class="flex mb-6 px-8 sm:px-0">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+          {data.title}
+        </h2>
+      </div>
+    </div>
+  )}
+  <div class:list={["grid grid-cols-1 grid-flow-row auto-rows-[2fr]", gridColsMap[amountOfColumns]]} data-tina-field={tinaField(data, "columns")}>
+    {columns.map((column, index) => (
+      <article class:list={["p-10", getColumnBackgroundColor(index)]} data-tina-field={tinaField(column)}>
+        <div class={titleContainerMap[amountOfColumns]}>
+          <h3 class:list={[titleSize, "break-words hyphens-auto font-heading text-white mb-4"]} data-tina-field={tinaField(column, "title")}>
+            {column.title}
+          </h3>
+        </div>
+        <div class="mb-4">
+          <p class="text-white" data-tina-field={tinaField(column, "content")}>
+            {column.content}
+          </p>
+        </div>
+        {column.buttons && column.buttons.length > 0 && (
+          <div data-tina-field={tinaField(column, "buttons")}>
+            {column.buttons.map((button) => button && <LinkButton data={button} />)}
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</section>

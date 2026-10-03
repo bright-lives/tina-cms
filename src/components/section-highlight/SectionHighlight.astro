@@ -1,0 +1,37 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionHighlightSection } from "../../lib/data";
+import LinkButton from "../link-button/LinkButton.astro";
+
+// Mirrors bright-lives-blocks/section-highlight/save.js and style.js.
+interface Props {
+  data: SectionHighlightSection;
+}
+
+const { data } = Astro.props;
+const reversed = data.orientation === "reversed";
+const backgroundGradient = data.backgroundGradient ?? true;
+---
+
+<section class={backgroundGradient ? "bg-radial-gradient" : undefined}>
+  <article class="container mx-auto grid grid-cols-1 md:grid-cols-2">
+    <div class:list={["flex items-center sm:px-10 sm:py-20 md:py-0 md:pt-14 md:pl-0 md:pr-10", reversed && "md:order-2 md:px-20"]}>
+      <div class="font-sans max-w-lg py-20 sm:pt-0 px-8 sm:px-0">
+        <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+          {data.title}
+        </h2>
+        <p class="mb-8" data-tina-field={tinaField(data, "content")}>
+          {data.content}
+        </p>
+        <div data-tina-field={tinaField(data, "buttons")}>
+          {data.buttons?.filter((button) => button?.url).map((button) => button && button.url && (
+            <LinkButton data={{ ...button, url: button.url }} />
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class:list={["flex md:mt-16", reversed && "md:order-1"]} data-tina-field={tinaField(data, "imageUrl")}>
+      {data.imageUrl && <img src={data.imageUrl} alt={data.imageAlt ?? ""} class="md:mt-auto" />}
+    </div>
+  </article>
+</section>

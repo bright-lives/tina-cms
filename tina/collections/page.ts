@@ -1,5 +1,6 @@
 import type {Collection} from "tinacms";
 import { linkButtonFields, linkButtonTemplate } from "../../src/components/link-button/link-button";
+import { sectionHighlightTemplate } from "../../src/components/section-highlight/section-highlight";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -41,6 +42,7 @@ export const PageCollection: Collection = {
           ],
         },
         linkButtonTemplate,
+        sectionHighlightTemplate,
       ],
     },
   ],

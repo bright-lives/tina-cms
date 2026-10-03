@@ -15,6 +15,11 @@ export type PageSections = NonNullable<NonNullable<CmsPage['sections']>[number]>
 
 export type HeroSection = Extract<PageSections, { __typename: 'PagesSectionsHero' }>;
 
+export type SectionHighlightSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsSectionHighlight' }
+>;
+
 export type CmsPage = Awaited<ReturnType<typeof getPage>>['data']['pages'];
 
 // Shared shape for the Button field group, used both as a standalone section

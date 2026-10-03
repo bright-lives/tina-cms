@@ -11,10 +11,19 @@ sections:
       style: fill
       variant: normal
     _template: hero
-  - text: Doneer nu
-    url: /doneren
-    style: outline
-    variant: normal
-    _template: button
+  - title: 'BrightLives ondersteunt lokale initiatieven die kinderen de ruimte geven om te leren, te leven en te bloeien.'
+    content: |-
+      Elk kind verdient de kans om veilig op te groeien, zich te ontwikkelen en vol vertrouwen naar de toekomst te kijken.
+      BrightLives – een initiatief van stichting Child Support Ghana – werkt samen met lokale partners die precies dát mogelijk maken.
+      Want waar kinderen kunnen groeien, groeit de toekomst.
+    imageUrl: /Dan-en-Oscar-2018.jpeg
+    orientation: normal
+    backgroundGradient: true
+    buttons:
+      - text: Meer over onze missie
+        url: /projecten
+        style: outline
+        variant: normal
+    _template: sectionHighlight
 ---
 

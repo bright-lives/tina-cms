@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Applies when the page starts with a hero, e.g. to let the header overlay it */
+@custom-variant over-hero (body:has(main > :first-child [data-hero]) &);
+
 @theme {
   --font-sans: 'Lato';
   --font-serif: 'Merriweather';

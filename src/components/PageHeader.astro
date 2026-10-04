@@ -14,14 +14,14 @@ const menuItems = (menuData.items || [])
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 ---
 
-<div class="absolute w-full z-30">
-  <div class="container mx-auto flex">
+<header class="relative w-full z-30 bg-primary-900 over-hero:absolute over-hero:bg-transparent">
+  <div class="container mx-auto flex pb-6 px-8 sm:px-0">
     <div class="mr-auto">
       <a href="https://www.brightlives.nl">
         <img src="/logo-white.svg" alt="Bright lives logo" width="200" height="50" class="pt-6">
       </a>
     </div>
-    <div class="flex items-center gap-8 pr-6 pt-8">
+    <div class="flex items-center gap-8 sm:pr-6 pt-8">
       <nav class="flex gap-6">
         {menuItems.map((item) => (
           <a href={item.href} class="text-white hover:text-gray-200 transition">
@@ -31,4 +31,4 @@ const menuItems = (menuData.items || [])
       </nav>
     </div>
   </div>
-</div>
+</header>

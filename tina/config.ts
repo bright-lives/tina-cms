@@ -17,6 +17,11 @@ export default defineConfig({
   clientId: process.env.PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
+  // Keeps generated fragments small: references (e.g. menu -> page) don't pull in full page content
+  client: {
+    referenceDepth: 1,
+  },
+
   build: {
     outputFolder: "admin",
     publicFolder: "public",

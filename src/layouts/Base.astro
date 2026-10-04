@@ -11,8 +11,8 @@ const config = (await getConfig()).data?.config ?? null;
 <!doctype html>
 <html lang="en">
   <BaseHead title={config?.SEOTitle} description={config?.SEODescription} />
-  <PageHeader />
   <body>
+    <PageHeader />
     <slot />
     <PageFooter data={config?.footer} />
   </body>

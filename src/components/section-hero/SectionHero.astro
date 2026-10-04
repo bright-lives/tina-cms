@@ -8,8 +8,8 @@ interface Props { data: HeroSection }
 const { data } = Astro.props;
 ---
 
-<section class="grid [grid-template-areas:'stack']">
-  <div class="[grid-area:stack] z-20 container mx-auto">
+<section data-hero class="grid [grid-template-areas:'stack']">
+  <div class="[grid-area:stack] z-20 container mx-auto px-8 sm:px-0">
     <div class="mt-60">
       <h1 class="text-hero-heading mb-8 text-white">{data.heading}</h1>
       <div data-tina-field={tinaField(data, 'button')}>

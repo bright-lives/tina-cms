@@ -22,13 +22,51 @@ const menuItems = (menuData.items || [])
       </a>
     </div>
     <div class="flex items-center gap-8 sm:pr-6 pt-8">
-      <nav class="flex gap-6">
+      <nav class="hidden md:flex gap-6">
         {menuItems.map((item) => (
           <a href={item.href} class="text-white hover:text-gray-200 transition">
             {item.label}
           </a>
         ))}
       </nav>
+      <button
+        id="menu-toggle"
+        type="button"
+        class="md:hidden text-white"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Menu"
+      >
+        <svg id="icon-bars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="30" height="30" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg id="icon-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="20" height="20" class="hidden m-1.25" aria-hidden="true">
+          <path fill-rule="evenodd" d="M0 14.545L1.455 16 8 9.455 14.545 16 16 14.545 9.455 8 16 1.455 14.545 0 8 6.545 1.455 0 0 1.455 6.545 8z" />
+        </svg>
+      </button>
     </div>
   </div>
+  <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-primary-500">
+    <ul class="flex flex-col">
+      {menuItems.map((item) => (
+        <li class="flex text-white hover:bg-primary-800">
+          <a href={item.href} class="p-8 w-full">
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = !document.getElementById('mobile-menu')!.classList.toggle('hidden');
+
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    document.getElementById('icon-bars')!.classList.toggle('hidden', isOpen);
+    document.getElementById('icon-cross')!.classList.toggle('hidden', !isOpen);
+  });
+</script>

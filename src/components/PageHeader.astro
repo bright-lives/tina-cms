@@ -1,14 +1,10 @@
 ---
-import fs from 'fs';
-import path from 'path';
-
-const menuPath = path.join(process.cwd(), 'src/content/menu/index.json');
-const menuData = JSON.parse(fs.readFileSync(menuPath, 'utf-8'));
+import menuData from '../content/menu/index.json';
 
 const menuItems = (menuData.items || [])
   .map((item) => {
     // Extract filename from full path (e.g., "content/pages/projecten.md" -> "projecten")
-    const filename = path.basename(item.page, '.md');
+    const filename = item.page.split('/').pop().replace('.md', '');
     return {
       label: item.label,
       href: filename === 'homepage' ? '/' : `/${filename}`,

@@ -8,6 +8,7 @@ import { sectionIntroTemplate } from "../../src/components/section-intro/section
 import { sectionFactsTemplate } from "../../src/components/section-facts/section-facts";
 import { sectionCalculatorTemplate } from "../../src/components/section-calculator/section-calculator";
 import { donationFormTemplate } from "../../src/components/donation-form/donation-form";
+import { sectionPostsOverviewTemplate } from "../../src/components/section-posts-overview/section-posts-overview";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -57,6 +58,7 @@ export const PageCollection: Collection = {
         sectionFactsTemplate,
         sectionCalculatorTemplate,
         donationFormTemplate,
+        sectionPostsOverviewTemplate,
       ],
     },
   ],

@@ -1,0 +1,16 @@
+---
+import type { CmsPost } from "../../lib/data";
+
+interface Props {
+  tags: CmsPost["tags"];
+  class?: string;
+}
+
+const { tags, class: className } = Astro.props;
+---
+
+<ul class={className}>
+  {tags?.map((t) => t?.tag && (
+    <li class="inline-block mr-2 text-primary-400">{t.tag.title}</li>
+  ))}
+</ul>

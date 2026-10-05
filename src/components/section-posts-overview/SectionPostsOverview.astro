@@ -1,0 +1,33 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import { getPostsByTag, postUrl, type SectionPostsOverviewSection } from "../../lib/data";
+import PostTags from "../post-tags/PostTags.astro";
+
+interface Props {
+  data: SectionPostsOverviewSection;
+}
+
+const { data } = Astro.props;
+const posts = data.tag ? await getPostsByTag(data.tag._sys.filename) : [];
+---
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 m-16 gap-y-20 bg-slate-200" data-tina-field={tinaField(data, "tag")}>
+  {posts.map((post) => (
+    <>
+      <article class="p-10 lg:p-20 bg-white flex flex-col">
+        <h2 class="text-2xl leading-normal font-serif mb-6 hover:text-primary-500">
+          <a href={postUrl(post)}>{post.title}</a>
+        </h2>
+        <div class="mb-8 prose flex-grow">
+          <p>{post.excerpt}</p>
+        </div>
+        <div class="block">
+          <PostTags tags={post.tags} />
+        </div>
+      </article>
+      <div class="bg-slate-500 bg-cover bg-center h-[500px]" style={post.image ? `background-image: url('${post.image}');` : undefined}>
+        <a href={postUrl(post)} class="block h-full w-full" aria-label={post.title}></a>
+      </div>
+    </>
+  ))}
+</section>

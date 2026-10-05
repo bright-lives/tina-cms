@@ -1,5 +1,10 @@
 ---
 title: Hello, World!
+date: 2026-10-05T00:00:00.000Z
+excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non lorem diam. Quisque vulputate nibh sodales eros pretium tincidunt.
+image: /PA230280-scaled.jpg
+tags:
+  - tag: content/tags/nieuws-en-verhalen.json
 ---
 
 ## Hello World!

@@ -14,6 +14,14 @@
       "label": "Doneren",
       "page": "content/pages/doneren.md",
       "order": 3
+    },
+    {
+      "label": "Werken bij",
+      "page": "content/pages/werken-bij.md"
+    },
+    {
+      "label": "Nieuws & verhalen",
+      "page": "content/pages/nieuws-en-verhalen.md"
     }
   ]
 }

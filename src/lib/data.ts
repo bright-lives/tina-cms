@@ -49,11 +49,20 @@ export type SectionCalculatorSection = Extract<
   { __typename: 'PagesSectionsCalculator' }
 >;
 
+export type DonationFormSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsDonationForm' }
+>;
+
 export type FooterConfig = NonNullable<
   NonNullable<Awaited<ReturnType<typeof getConfig>>['data']['config']>['footer']
 >;
 
 export type CmsPage =Awaited<ReturnType<typeof getPage>>['data']['pages'];
+
+// Public URL of a referenced CMS page; mirrors the router in tina/collections/page.ts.
+export const pageUrl = (page: { _sys: { filename: string } }) =>
+  page._sys.filename === 'homepage' ? '/' : `/${page._sys.filename}`;
 
 // Shared shape for the Button field group, used both as a standalone section
 // (PagesSectionsButton) and nested inside other sections (e.g. Hero's `button`

@@ -1,14 +1,12 @@
 ---
 import { tinaField } from '@tinacms/astro/tina-field';
-import type { ButtonData } from '../../lib/data';
+import { pageUrl, type ButtonData } from '../../lib/data';
 
 interface Props { data: ButtonData }
 
 const { data } = Astro.props;
 const { text, page } = data;
-const url = page
-  ? page._sys.filename === 'homepage' ? '/' : `/${page._sys.filename}`
-  : data.url;
+const url = page ? pageUrl(page) : data.url;
 const style = data.style ?? 'fill';
 const variant = data.variant ?? 'normal';
 

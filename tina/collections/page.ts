@@ -7,6 +7,7 @@ import { sectionDonateTemplate } from "../../src/components/section-donate/secti
 import { sectionIntroTemplate } from "../../src/components/section-intro/section-intro";
 import { sectionFactsTemplate } from "../../src/components/section-facts/section-facts";
 import { sectionCalculatorTemplate } from "../../src/components/section-calculator/section-calculator";
+import { donationFormTemplate } from "../../src/components/donation-form/donation-form";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -55,6 +56,7 @@ export const PageCollection: Collection = {
         sectionIntroTemplate,
         sectionFactsTemplate,
         sectionCalculatorTemplate,
+        donationFormTemplate,
       ],
     },
   ],

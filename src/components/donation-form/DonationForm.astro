@@ -1,0 +1,105 @@
+---
+// Submits to the `donate` action (src/actions), which creates a Mollie payment
+// and returns its checkout URL.
+import { tinaField } from "@tinacms/astro/tina-field";
+import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
+import { pageUrl, type DonationFormSection } from "../../lib/data";
+
+interface Props {
+  data: DonationFormSection;
+}
+
+const { data } = Astro.props;
+const amounts = [5, 10, 15];
+const inputClass = "p-4 w-full bg-slate-100 border border-slate-300 rounded";
+---
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 py-24 px-8 md:px-0">
+  <div>
+    <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+    <div class="prose" data-tina-field={tinaField(data, "description")}>
+      <TinaMarkdown content={data.description} />
+    </div>
+  </div>
+  <form class="donation-form bg-white p-8" novalidate>
+    <input type="hidden" name="redirect" value={data.thankYouPage ? pageUrl(data.thankYouPage) : "/"} />
+    <div data-error class="hidden mb-4 p-4 bg-red-100 border border-red-500 rounded" role="alert">
+      <p class="text-red-500"></p>
+    </div>
+    <div class="grid grid-cols-1 mb-6">
+      <label class="font-bold mb-3">
+        Naam: <span class="text-red-500">*</span>
+        <input type="text" name="name" class:list={[inputClass, "mt-3 font-normal"]} autocomplete="name" required />
+      </label>
+    </div>
+    <fieldset class="mb-6">
+      <legend class="font-bold mb-3">Kies een bedrag:</legend>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {amounts.map((amount, index) => (
+          <label class="flex items-center gap-3 border border-slate-300 rounded p-4 cursor-pointer hover:bg-secondary-100 has-checked:bg-secondary-100">
+            <input type="radio" name="amount" value={amount} checked={index === 0} />
+            <span>€ {amount},-</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+    <div class="grid grid-cols-1 mb-6">
+      <label class="font-bold mb-3">
+        Of voer zelf een bedrag in:
+        <input type="number" name="customAmount" min="1" max="10000" step="0.01" inputmode="decimal" class:list={[inputClass, "mt-3 font-normal"]} />
+      </label>
+    </div>
+    <div class="grid">
+      <button
+        class="p-4 border-2 text-white bg-primary-500 border-primary-500 hover:bg-primary-700 disabled:opacity-60"
+        type="submit"
+        data-tina-field={tinaField(data, "submitLabel")}
+      >
+        {data.submitLabel || "Doneer"}
+      </button>
+    </div>
+  </form>
+</section>
+
+<script>
+  import { actions, isInputError } from "astro:actions";
+
+  document.querySelectorAll<HTMLFormElement>(".donation-form").forEach((form) => {
+    const errorBox = form.querySelector<HTMLElement>("[data-error]")!;
+    const button = form.querySelector<HTMLButtonElement>("button[type=submit]")!;
+    const radios = form.querySelectorAll<HTMLInputElement>("input[name=amount]");
+    const customAmount = form.querySelector<HTMLInputElement>("input[name=customAmount]")!;
+
+    // A preset and a custom amount are mutually exclusive.
+    customAmount.addEventListener("input", () => {
+      if (customAmount.value) radios.forEach((radio) => (radio.checked = false));
+    });
+    radios.forEach((radio) => radio.addEventListener("change", () => (customAmount.value = "")));
+
+    const showError = (message?: string) => {
+      errorBox.querySelector("p")!.textContent = message ? `Fout: ${message}` : "";
+      errorBox.classList.toggle("hidden", !message);
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      showError();
+      button.disabled = true;
+
+      const { data, error } = await actions.donate(new FormData(form));
+
+      if (error) {
+        const message = isInputError(error)
+          ? Object.values(error.fields).flat()[0]
+          : error.message;
+        showError(message);
+        button.disabled = false;
+        return;
+      }
+
+      window.location.href = data.checkoutUrl;
+    });
+  });
+</script>

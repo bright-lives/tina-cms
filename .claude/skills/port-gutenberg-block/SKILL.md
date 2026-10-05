@@ -188,5 +188,17 @@ if possible, the Tina sidebar's click-to-edit on the new field.
   table-calculation's `totalPrice`, computed from `rows` in `edit.js`) are
   computed in the component, not stored as fields.
 
+- Not everything on the WP site is a block. The Mollie donation form is a
+  PHP shortcode (`[donation_form]`) in
+  `bright-lives-theme/functions/mollie/` — grep the whole WP repo, not just
+  `src/blocks/`. Don't port the PHP for server-side logic. Build it from the
+  third-party API's own reference (e.g. Mollie's create-payment docs) as an
+  Astro Action (`src/actions/index.ts`, `accept: 'form'` + zod input),
+  called from the component's `<script>` via `actions.x(new FormData(form))`.
+  Actions run on demand even though pages are static. Secrets go through
+  `astro:env/server`, declared in `astro.config.mjs`. When testing
+  `/_actions/x` with curl, send an `Origin` header — Astro's CSRF check
+  returns 403 on form POSTs without one.
+
 When a future port reveals a new gotcha, add it here rather than letting it
 live only in that conversation — that's the point of this file.

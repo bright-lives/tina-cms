@@ -8,35 +8,35 @@ export const calculationRowFields: TinaField[] = [
   { type: "string", name: "kind", label: "Soort" },
   { type: "string", name: "item", label: "Artikelen" },
   { type: "number", name: "amount", label: "Aantal" },
-  { type: "number", name: "unitPrice", label: "Stuk prijs" },
+  { type: "number", name: "unitPrice", label: "Stukprijs (€)" },
 ];
 
 export const progressBarFields: TinaField[] = [
-  { type: "number", name: "start", label: "Start" },
+  { type: "number", name: "start", label: "Startbedrag (€)", description: "Meestal 0." },
   {
     type: "number",
     name: "end",
-    label: "End",
-    description: "Total of the project costs; updates automatically.",
+    label: "Doelbedrag (€)",
+    description: "Totaal van de projectkosten; wordt automatisch berekend.",
     ui: { component: ProgressBarEndField },
   },
-  { type: "number", name: "current", label: "Current" },
+  { type: "number", name: "current", label: "Opgehaald bedrag (€)" },
 ];
 
 export const sectionCalculatorFields: TinaField[] = [
   {
     type: "object",
     name: "costs",
-    label: "Project costs",
+    label: "Kostenoverzicht",
     fields: [
-      { type: "string", name: "title", label: "Title" },
+      { type: "string", name: "title", label: "Titel" },
       {
         type: "object",
         list: true,
         name: "rows",
-        label: "Rows",
+        label: "Kostenposten",
         ui: {
-          itemProps: (item) => ({ label: item?.item || "Row" }),
+          itemProps: (item) => ({ label: item?.item || "Kostenpost" }),
         },
         fields: calculationRowFields,
       },
@@ -45,18 +45,18 @@ export const sectionCalculatorFields: TinaField[] = [
   {
     type: "object",
     name: "explainer",
-    label: "Explainer",
+    label: "Toelichting en voortgang",
     fields: [
-      { type: "string", name: "title", label: "Title" },
-      { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
-      { type: "object", name: "progressBar", label: "Progress bar", fields: progressBarFields },
-      { type: "object", name: "button", label: "Button", fields: [...linkButtonFields] },
+      { type: "string", name: "title", label: "Titel" },
+      { type: "string", name: "description", label: "Tekst", ui: { component: "textarea" } },
+      { type: "object", name: "progressBar", label: "Voortgangsbalk", fields: progressBarFields },
+      { type: "object", name: "button", label: "Knop", fields: [...linkButtonFields] },
     ],
   },
 ];
 
 export const sectionCalculatorTemplate = {
-  label: "Section Calculation overview",
+  label: "Projectkosten en voortgang",
   name: "calculator",
   fields: sectionCalculatorFields,
 };

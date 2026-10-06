@@ -2,7 +2,6 @@
 import { tinaField } from '@tinacms/astro/tina-field';
 
 import Hero from '../section-hero/SectionHero.astro';
-import LinkButton from '../link-button/LinkButton.astro';
 import SectionHighlight from '../section-highlight/SectionHighlight.astro';
 import SectionStandoutColumns from '../section-standout-columns/SectionStandoutColumns.astro';
 import SectionDisplayData from '../section-display-data/SectionDisplayData.astro';
@@ -26,16 +25,15 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
   const rendered = (() => {
     switch (section.__typename) {
       case 'PagesSectionsHero': return <Hero data={section} />;
-      case 'PagesSectionsButton': return <LinkButton data={section} />;
+      case 'PagesSectionsIntro': return <SectionIntro data={section} />;
       case 'PagesSectionsHighlight': return <SectionHighlight data={section} />;
       case 'PagesSectionsStandoutColumns': return <SectionStandoutColumns data={section} />;
       case 'PagesSectionsDisplayData': return <SectionDisplayData data={section} />;
-      case 'PagesSectionsDonate': return <SectionDonate data={section} />;
-      case 'PagesSectionsIntro': return <SectionIntro data={section} />;
       case 'PagesSectionsFacts': return <SectionFacts data={section} />;
       case 'PagesSectionsCalculator': return <SectionCalculator data={section} />;
-      case 'PagesSectionsDonationForm': return <DonationForm data={section} />;
       case 'PagesSectionsPostsOverview': return <SectionPostsOverview data={section} />;
+      case 'PagesSectionsDonate': return <SectionDonate data={section} />;
+      case 'PagesSectionsDonationForm': return <DonationForm data={section} />;
       default: return null;
     }
   })();

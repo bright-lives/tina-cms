@@ -53,9 +53,10 @@ Look at how the block is used inside `bright-lives`'s page templates:
   `sections` list, rendered via `Sections.astro`'s `switch`.
 - **Nested field group** (block is composed *inside* another block's markup
   — e.g. `button` inside `section-hero`) → becomes an `object` field nested
-  inside the parent section's Tina fields, *and* is still useful as its own
-  standalone `buttonTemplate` if it might ever stand alone in a page too
-  (this project registers both for `button`).
+  inside the parent section's Tina fields only. Don't also register it as a
+  standalone section: editors don't distinguish "components" from
+  "sections", and a lone component in the "add section" menu just confuses
+  them (`button` used to be registered both ways; that was removed).
 
 If it's genuinely ambiguous from the source, ask rather than guess — it
 changes where the component gets wired in (Step 6).
@@ -67,6 +68,14 @@ New file exporting:
 - `[name]Template` — `{ label, name, fields: [name]Fields }`, for use when
   the block can appear as a standalone section.
 
+All editor-facing text (`label`, option labels, `description`,
+`itemProps` fallbacks) is **Dutch and non-technical** — describe what the
+editor sees on the page, not the block's code name (e.g. "Tekst met foto",
+not "Section Highlight"; "Afbeelding links/rechts", not "Normal/Reversed").
+Keep `name` and option `value`s in English and matching `block.json` —
+those are stored in content files, so renaming them breaks existing pages.
+Add a `description` when a field's effect isn't obvious from its label.
+
 Reuse `[name]Fields` (not the template) when embedding as a nested `object`
 field elsewhere — see `button` nested inside `hero` in `page.ts` for the
 pattern.
@@ -74,7 +83,9 @@ pattern.
 ## Step 4 — Wire into `tina/collections/page.ts`
 
 - Import `{ [name]Fields, [name]Template }` from the new file.
-- If standalone: push `[name]Template` into the relevant `templates` array.
+- If standalone: insert `[name]Template` into the `templates` array at the
+  spot it would typically appear on a page (top-to-bottom) — that order is
+  the order of Tina's "add section" menu.
 - If nested: add `{ type: 'object', label: '...', name: '...', fields:
   [name]Fields }` to the parent template that embeds it.
 

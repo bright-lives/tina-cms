@@ -5,20 +5,20 @@ export const linkButtonFields: TinaField[] = [
   {
     type: "string",
     name: "text",
-    label: "Text",
+    label: "Tekst op de knop",
   },
   {
     type: "reference",
     name: "page",
-    label: "Select Page",
+    label: "Link naar pagina",
     collections: ["pages"],
-    description: "Select a CMS page, or leave empty to use the manual URL below.",
+    description: "Kies een pagina van deze website, of laat leeg en vul hieronder een eigen link in.",
   },
   {
     type: "string",
     name: "url",
-    label: "URL",
-    description: "Manual link (for example, an external URL). Disabled while a CMS page is selected.",
+    label: "Eigen link (URL)",
+    description: "Bijvoorbeeld een link naar een andere website. Uitgeschakeld zolang hierboven een pagina is gekozen.",
     ui: {
       component: ManualUrlField,
     },
@@ -26,26 +26,21 @@ export const linkButtonFields: TinaField[] = [
   {
     type: "string",
     name: "style",
-    label: "Style",
+    label: "Stijl",
     options: [
-      { label: "Fill", value: "fill" },
-      { label: "Outline", value: "outline" },
-      { label: "Text only", value: "textOnly" },
+      { label: "Gevuld", value: "fill" },
+      { label: "Omlijnd", value: "outline" },
+      { label: "Alleen tekst", value: "textOnly" },
     ],
   },
   {
     type: "string",
     name: "variant",
-    label: "Variant",
+    label: "Kleur",
+    description: "Kies op basis van de achtergrond waar de knop op staat.",
     options: [
-      { label: "Normal", value: "normal" },
-      { label: "Inverted", value: "inverted" },
+      { label: "Voor lichte achtergrond", value: "normal" },
+      { label: "Voor donkere achtergrond", value: "inverted" },
     ],
   },
 ];
-
-export const linkButtonTemplate = {
-  label: "Link Button",
-  name: "button",
-  fields: [...linkButtonFields],
-};

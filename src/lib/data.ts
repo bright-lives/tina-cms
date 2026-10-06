@@ -91,11 +91,11 @@ export const pageUrl = (page: { _sys: { filename: string } }) =>
 // Public URL of a post; mirrors the router in tina/collections/post.ts.
 export const postUrl = (post: { _sys: { filename: string } }) => `/posts/${post._sys.filename}`;
 
-// Shared shape for the Button field group, used both as a standalone section
-// (PagesSectionsButton) and nested inside other sections (e.g. Hero's `button`
-// field, PagesSectionsHeroButton) — those are distinct generated types with
-// the same structure. Only the referenced page's routing metadata is needed.
-type ButtonSection = Extract<PageSections, { __typename: 'PagesSectionsButton' }>;
+// Shared shape for the Button field group, nested inside several sections
+// (e.g. Hero's `button` field, PagesSectionsHeroButton) — each embedding gets a
+// distinct generated type with the same structure, so Hero's is used as the
+// reference. Only the referenced page's routing metadata is needed.
+type ButtonSection = NonNullable<HeroSection['button']>;
 
 export type ButtonData = Pick<
   ButtonSection,

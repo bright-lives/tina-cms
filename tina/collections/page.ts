@@ -1,5 +1,5 @@
 import type {Collection} from "tinacms";
-import { linkButtonFields, linkButtonTemplate } from "../../src/components/link-button/link-button";
+import { linkButtonFields } from "../../src/components/link-button/link-button";
 import { sectionHighlightTemplate } from "../../src/components/section-highlight/section-highlight";
 import { sectionStandoutColumnsTemplate } from "../../src/components/section-standout-columns/section-standout-columns";
 import { sectionDisplayDataTemplate } from "../../src/components/section-display-data/section-display-data";
@@ -12,7 +12,7 @@ import { sectionPostsOverviewTemplate } from "../../src/components/section-posts
 
 export const PageCollection: Collection = {
   name: "pages",
-  label: "Pages",
+  label: "Pagina's",
   path: "content/pages",
   ui: {
     router: ({ document }) =>
@@ -22,43 +22,54 @@ export const PageCollection: Collection = {
     {
       type: "string",
       name: "title",
-      label: "Title",
+      label: "Paginatitel",
     },
     {
       type: "object",
       list: true,
       name: "sections",
-      label: "Sections",
+      label: "Onderdelen",
       templates: [
         {
-          label: "Hero",
+          label: "Openingsbeeld",
           name: "hero",
           fields: [
-            { type: "string", name: "heading", label: "Heading" },
-            { type: "string", name: "subheading", label: "Subheading" },
+            { type: "string", name: "heading", label: "Titel" },
             {
-              type: 'object', label: 'Image', name: 'image',
+              type: "string",
+              name: "subheading",
+              label: "Ondertitel",
+              description: "Wordt op dit moment niet getoond op de website.",
+            },
+            {
+              type: 'object', label: 'Afbeelding', name: 'image',
               fields: [
-                { name: 'src', label: 'Image Source', type: 'image' },
-                { name: 'alt', label: 'Alt Text', type: 'string' },
+                { name: 'src', label: 'Afbeelding', type: 'image' },
+                {
+                  name: 'alt',
+                  label: 'Beschrijving afbeelding',
+                  type: 'string',
+                  description: 'Korte beschrijving van wat er op de foto staat, voor schermlezers en zoekmachines.',
+                },
               ],
             },
             {
-              type: 'object', label: 'Button', name: 'button',
+              type: 'object', label: 'Knop', name: 'button',
               fields: [...linkButtonFields],
             },
           ],
         },
-        linkButtonTemplate,
+        // Ordered as they'd typically appear top-to-bottom on a page; this is
+        // also the order of Tina's "add section" menu.
+        sectionIntroTemplate,
         sectionHighlightTemplate,
         sectionStandoutColumnsTemplate,
         sectionDisplayDataTemplate,
-        sectionDonateTemplate,
-        sectionIntroTemplate,
         sectionFactsTemplate,
         sectionCalculatorTemplate,
-        donationFormTemplate,
         sectionPostsOverviewTemplate,
+        sectionDonateTemplate,
+        donationFormTemplate,
       ],
     },
   ],

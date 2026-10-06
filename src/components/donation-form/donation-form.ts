@@ -1,20 +1,20 @@
 import type { TinaField } from "tinacms";
 
 export const donationFormFields: TinaField[] = [
-  { type: "string", name: "title", label: "Title" },
-  { type: "rich-text", name: "description", label: "Description" },
-  { type: "string", name: "submitLabel", label: "Submit label" },
+  { type: "string", name: "title", label: "Titel" },
+  { type: "rich-text", name: "description", label: "Tekst" },
+  { type: "string", name: "submitLabel", label: "Tekst op de verzendknop" },
   {
     type: "reference",
     name: "thankYouPage",
-    label: "Thank-you page",
+    label: "Bedankpagina",
     collections: ["pages"],
-    description: "Page donors return to after paying.",
+    description: "Pagina waar donateurs na het betalen op terechtkomen.",
   },
 ];
 
 export const donationFormTemplate = {
-  label: "Donation Form",
+  label: "Donatieformulier",
   name: "donationForm",
   fields: donationFormFields,
 };

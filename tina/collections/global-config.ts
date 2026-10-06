@@ -2,7 +2,7 @@ import type { Collection } from "tinacms";
 
 export const GlobalConfigCollection: Collection = {
   name: "config",
-  label: "Global Config",
+  label: "Algemene instellingen",
   path: "src/content/config",
   format: "json",
   ui: {
@@ -12,62 +12,64 @@ export const GlobalConfigCollection: Collection = {
     {
       type: "string",
       name: "SEOTitle",
-      label: "SEO title",
+      label: "Titel voor zoekmachines",
+      description: "Wordt getoond in het browsertabblad en in zoekresultaten van bijvoorbeeld Google.",
       required: true,
     },
     {
       type: "string",
       name: "SEODescription",
-      label: "SEO Description",
+      label: "Omschrijving voor zoekmachines",
+      description: "Korte omschrijving van de website die in zoekresultaten wordt getoond.",
       required: true,
     },
     {
       type: "object",
       name: "footer",
-      label: "Footer",
+      label: "Footer (onderkant van elke pagina)",
       fields: [
         {
           type: "string",
           name: "newsletterTitle",
-          label: "Newsletter title",
+          label: "Titel nieuwsbrief",
         },
         {
           type: "string",
           name: "newsletterFormAction",
-          label: "Newsletter form URL",
-          description: "Mailchimp embedded form action URL (…list-manage.com/subscribe/post?u=…&id=…)",
+          label: "Mailchimp-formulierlink",
+          description: "De 'form action'-URL uit het Mailchimp-insluitformulier (…list-manage.com/subscribe/post?u=…&id=…)",
         },
         {
           type: "string",
           name: "newsletterPlaceholder",
-          label: "Newsletter e-mail placeholder",
+          label: "Voorbeeldtekst in e-mailveld",
         },
         {
           type: "string",
           name: "newsletterButtonText",
-          label: "Newsletter button text",
+          label: "Tekst op aanmeldknop",
         },
         {
           type: "string",
           name: "contactTitle",
-          label: "Contact title",
+          label: "Titel contactgegevens",
         },
         {
           type: "string",
           name: "addressLines",
-          label: "Address lines",
+          label: "Adresregels",
           list: true,
         },
         {
           type: "string",
           name: "email",
-          label: "E-mail address",
+          label: "E-mailadres",
         },
         {
           type: "string",
           name: "copyright",
-          label: "Copyright name",
-          description: "Shown after © and the current year",
+          label: "Naam bij copyright",
+          description: "Wordt getoond na © en het huidige jaar",
         },
       ],
     },

@@ -9,6 +9,11 @@ import { sectionFactsTemplate } from "../../src/components/section-facts/section
 import { sectionCalculatorTemplate } from "../../src/components/section-calculator/section-calculator";
 import { donationFormTemplate } from "../../src/components/donation-form/donation-form";
 import { sectionPostsOverviewTemplate } from "../../src/components/section-posts-overview/section-posts-overview";
+import { sectionStepsTemplate } from "../../src/components/section-steps/section-steps";
+import { sectionQuoteTemplate } from "../../src/components/section-quote/section-quote";
+import { sectionPeopleTemplate } from "../../src/components/section-people/section-people";
+import { sectionFaqTemplate } from "../../src/components/section-faq/section-faq";
+import { sectionDownloadsTemplate } from "../../src/components/section-downloads/section-downloads";
 
 export const PageCollection: Collection = {
   name: "pages",
@@ -66,8 +71,13 @@ export const PageCollection: Collection = {
         sectionStandoutColumnsTemplate,
         sectionDisplayDataTemplate,
         sectionFactsTemplate,
+        sectionStepsTemplate,
+        sectionQuoteTemplate,
+        sectionPeopleTemplate,
         sectionCalculatorTemplate,
         sectionPostsOverviewTemplate,
+        sectionFaqTemplate,
+        sectionDownloadsTemplate,
         sectionDonateTemplate,
         donationFormTemplate,
       ],

@@ -1,0 +1,36 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
+import type { SectionFaqSection } from "../../lib/data";
+
+interface Props {
+  data: SectionFaqSection;
+}
+
+const { data } = Astro.props;
+const items = (data.items ?? []).filter((item) => item !== null);
+---
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 py-24 px-8 sm:px-0">
+  <div class="max-w-lg">
+    <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+    {data.content && (
+      <p data-tina-field={tinaField(data, "content")}>{data.content}</p>
+    )}
+  </div>
+  <div class="border-t-2 border-primary-500" data-tina-field={tinaField(data, "items")}>
+    {items.map((item) => (
+      <details class="group border-b-2 border-primary-500" data-tina-field={tinaField(item)}>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-serif text-xl hover:text-primary-500 [&::-webkit-details-marker]:hidden">
+          <span data-tina-field={tinaField(item, "question")}>{item.question}</span>
+          <span class="text-3xl leading-none text-primary-500 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="prose pb-6" data-tina-field={tinaField(item, "answer")}>
+          <TinaMarkdown content={item.answer} />
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

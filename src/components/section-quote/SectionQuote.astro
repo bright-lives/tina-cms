@@ -1,0 +1,56 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionQuoteSection } from "../../lib/data";
+
+interface Props {
+  data: SectionQuoteSection;
+}
+
+const { data } = Astro.props;
+const quotes = (data.quotes ?? []).filter((quote) => quote !== null);
+const single = quotes.length === 1;
+---
+
+<section class="container mx-auto py-24 px-8 sm:px-0">
+  {data.title && (
+    <h2 class="text-4xl leading-normal font-serif mb-12" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+  )}
+  <div
+    class:list={["grid grid-cols-1 gap-16", !single && "md:grid-cols-2 lg:grid-cols-3"]}
+    data-tina-field={tinaField(data, "quotes")}
+  >
+    {quotes.map((quote) => (
+      <figure
+        class:list={["flex flex-col", single && "max-w-3xl mx-auto items-center text-center"]}
+        data-tina-field={tinaField(quote)}
+      >
+        <span class="font-serif text-7xl leading-none text-primary-500 h-10" aria-hidden="true">“</span>
+        <blockquote
+          class:list={["font-serif leading-relaxed mb-8", single ? "text-2xl md:text-3xl" : "text-xl"]}
+          data-tina-field={tinaField(quote, "quote")}
+        >
+          <p>{quote.quote}</p>
+        </blockquote>
+        <figcaption class="flex items-center gap-4 mt-auto text-left">
+          {quote.image && (
+            <img
+              src={quote.image}
+              alt=""
+              class="w-14 h-14 rounded-full object-cover"
+              loading="lazy"
+              data-tina-field={tinaField(quote, "image")}
+            />
+          )}
+          <div>
+            <div class="font-bold" data-tina-field={tinaField(quote, "name")}>{quote.name}</div>
+            {quote.role && (
+              <div class="text-secondary-400" data-tina-field={tinaField(quote, "role")}>{quote.role}</div>
+            )}
+          </div>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

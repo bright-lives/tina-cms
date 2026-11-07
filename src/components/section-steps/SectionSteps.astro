@@ -1,0 +1,53 @@
+---
+import { tinaField } from "@tinacms/astro/tina-field";
+import type { SectionStepsSection } from "../../lib/data";
+import LinkButton from "../link-button/LinkButton.astro";
+
+interface Props {
+  data: SectionStepsSection;
+}
+
+const { data } = Astro.props;
+const steps = (data.steps ?? []).filter((step) => step !== null);
+const buttons = (data.buttons ?? []).filter((button) => button !== null);
+---
+
+<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 py-24 px-8 sm:px-0">
+  <div class="max-w-lg">
+    <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
+      {data.title}
+    </h2>
+    {data.content && (
+      <p class="mb-8" data-tina-field={tinaField(data, "content")}>{data.content}</p>
+    )}
+    {buttons.length > 0 && (
+      <div data-tina-field={tinaField(data, "buttons")}>
+        {buttons.map((button) => <LinkButton data={button} />)}
+      </div>
+    )}
+  </div>
+  <ol class="ml-5 border-l-2 border-primary-500" data-tina-field={tinaField(data, "steps")}>
+    {steps.map((step, index) => (
+      <li class="relative pl-10 pb-12 last:pb-0" data-tina-field={tinaField(step)}>
+        {data.numbered ? (
+          <span class="absolute -left-[21px] top-0 flex h-10 w-10 items-center justify-center rounded-full bg-primary-500 font-bold text-white" aria-hidden="true">
+            {index + 1}
+          </span>
+        ) : (
+          <span class="absolute -left-[9px] top-2 h-4 w-4 rounded-full border-2 border-primary-500 bg-white" aria-hidden="true"></span>
+        )}
+        {step.label && (
+          <p class="text-sm font-bold uppercase tracking-wide text-primary-500" data-tina-field={tinaField(step, "label")}>
+            {step.label}
+          </p>
+        )}
+        <h3 class="font-serif text-2xl leading-normal mb-2" data-tina-field={tinaField(step, "title")}>
+          {step.title}
+        </h3>
+        {step.content && (
+          <p data-tina-field={tinaField(step, "content")}>{step.content}</p>
+        )}
+      </li>
+    ))}
+  </ol>
+</section>

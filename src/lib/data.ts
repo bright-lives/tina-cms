@@ -78,6 +78,31 @@ export type SectionPostsOverviewSection = Extract<
   { __typename: 'PagesSectionsPostsOverview' }
 >;
 
+export type SectionStepsSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsSteps' }
+>;
+
+export type SectionQuoteSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsQuote' }
+>;
+
+export type SectionPeopleSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsPeople' }
+>;
+
+export type SectionFaqSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsFaq' }
+>;
+
+export type SectionDownloadsSection = Extract<
+  PageSections,
+  { __typename: 'PagesSectionsDownloads' }
+>;
+
 export type FooterConfig = NonNullable<
   NonNullable<Awaited<ReturnType<typeof getConfig>>['data']['config']>['footer']
 >;

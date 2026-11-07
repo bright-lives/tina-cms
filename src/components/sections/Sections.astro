@@ -11,6 +11,11 @@ import SectionFacts from '../section-facts/SectionFacts.astro';
 import SectionCalculator from '../section-calculator/SectionCalculator.astro';
 import DonationForm from '../donation-form/DonationForm.astro';
 import SectionPostsOverview from '../section-posts-overview/SectionPostsOverview.astro';
+import SectionSteps from '../section-steps/SectionSteps.astro';
+import SectionQuote from '../section-quote/SectionQuote.astro';
+import SectionPeople from '../section-people/SectionPeople.astro';
+import SectionFaq from '../section-faq/SectionFaq.astro';
+import SectionDownloads from '../section-downloads/SectionDownloads.astro';
 
 import type { CmsPage } from '../../lib/data';
 
@@ -30,8 +35,13 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
       case 'PagesSectionsStandoutColumns': return <SectionStandoutColumns data={section} />;
       case 'PagesSectionsDisplayData': return <SectionDisplayData data={section} />;
       case 'PagesSectionsFacts': return <SectionFacts data={section} />;
+      case 'PagesSectionsSteps': return <SectionSteps data={section} />;
+      case 'PagesSectionsQuote': return <SectionQuote data={section} />;
+      case 'PagesSectionsPeople': return <SectionPeople data={section} />;
       case 'PagesSectionsCalculator': return <SectionCalculator data={section} />;
       case 'PagesSectionsPostsOverview': return <SectionPostsOverview data={section} />;
+      case 'PagesSectionsFaq': return <SectionFaq data={section} />;
+      case 'PagesSectionsDownloads': return <SectionDownloads data={section} />;
       case 'PagesSectionsDonate': return <SectionDonate data={section} />;
       case 'PagesSectionsDonationForm': return <DonationForm data={section} />;
       default: return null;

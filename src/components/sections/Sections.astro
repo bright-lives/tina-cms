@@ -18,6 +18,7 @@ import SectionFaq from '../section-faq/SectionFaq.astro';
 import SectionDownloads from '../section-downloads/SectionDownloads.astro';
 
 import type { CmsPage } from '../../lib/data';
+import { sectionLabels } from '../../lib/section-labels';
 
 interface Props {
   data?: CmsPage | null;
@@ -25,6 +26,8 @@ interface Props {
 
 const { data } = Astro.props;
 const sections = (data?.sections ?? []).filter(s => s !== null);
+// Frames each section and names it, for the examples page.
+const showLabels = !!data?.showSectionLabels;
 ---
 {sections.map((section) => {
   const rendered = (() => {
@@ -47,5 +50,17 @@ const sections = (data?.sections ?? []).filter(s => s !== null);
       default: return null;
     }
   })();
-  return <div data-tina-field={tinaField(section)} class={rendered ? undefined : 'min-h-8'}>{rendered}</div>;
+  return (
+    <div
+      data-tina-field={tinaField(section)}
+      class:list={[!rendered && 'min-h-8', showLabels && 'relative outline-2 outline-dashed -outline-offset-4 outline-secondary-300']}
+    >
+      {rendered}
+      {showLabels && (
+        <span class="absolute bottom-3 left-3 z-40 bg-secondary-700 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+          {sectionLabels[section.__typename] ?? section.__typename}
+        </span>
+      )}
+    </div>
+  );
 })}

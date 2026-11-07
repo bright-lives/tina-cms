@@ -1,6 +1,7 @@
 ---
 import { tinaField } from "@tinacms/astro/tina-field";
 import type { SectionDownloadsSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionDownloadsSection;
@@ -13,7 +14,7 @@ const files = (data.files ?? []).filter((file) => file !== null);
 const fileType = (path: string) => path.split(".").pop()?.toUpperCase();
 ---
 
-<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 py-24 px-8 sm:px-0">
+<SectionContainer class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
   <div class="max-w-lg">
     <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
       {data.title}
@@ -48,4 +49,4 @@ const fileType = (path: string) => path.split(".").pop()?.toUpperCase();
       </li>
     ))}
   </ul>
-</section>
+</SectionContainer>

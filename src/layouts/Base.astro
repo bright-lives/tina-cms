@@ -5,12 +5,17 @@ import PageHeader from '../components/PageHeader.astro';
 import PageFooter from '../components/PageFooter.astro';
 import { getConfig } from '../lib/data';
 
+interface Props {
+  noindex?: boolean | null;
+}
+
+const { noindex } = Astro.props;
 const config = (await getConfig()).data?.config ?? null;
 ---
 
 <!doctype html>
 <html lang="en">
-  <BaseHead title={config?.SEOTitle} description={config?.SEODescription} />
+  <BaseHead title={config?.SEOTitle} description={config?.SEODescription} noindex={noindex} />
   <body>
     <PageHeader />
     <slot />

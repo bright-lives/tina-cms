@@ -30,6 +30,18 @@ export const PageCollection: Collection = {
       label: "Paginatitel",
     },
     {
+      type: "boolean",
+      name: "noindex",
+      label: "Verbergen voor zoekmachines",
+      description: "Bijvoorbeeld voor een bedankpagina of de voorbeeldenpagina.",
+    },
+    {
+      type: "boolean",
+      name: "showSectionLabels",
+      label: "Toon namen van onderdelen",
+      description: "Zet bij elk onderdeel de naam uit het menu 'Onderdeel toevoegen'. Bedoeld voor de voorbeeldenpagina.",
+    },
+    {
       type: "object",
       list: true,
       name: "sections",

@@ -2,6 +2,7 @@
 import { tinaField } from "@tinacms/astro/tina-field";
 import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
 import type { SectionFaqSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionFaqSection;
@@ -11,7 +12,7 @@ const { data } = Astro.props;
 const items = (data.items ?? []).filter((item) => item !== null);
 ---
 
-<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 py-24 px-8 sm:px-0">
+<SectionContainer class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
   <div class="max-w-lg">
     <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
       {data.title}
@@ -33,4 +34,4 @@ const items = (data.items ?? []).filter((item) => item !== null);
       </details>
     ))}
   </div>
-</section>
+</SectionContainer>

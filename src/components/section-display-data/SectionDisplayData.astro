@@ -1,6 +1,7 @@
 ---
 import { tinaField } from "@tinacms/astro/tina-field";
 import type { SectionDisplayDataSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 // Mirrors bright-lives-blocks/section-display-data/save.js.
 interface Props {
@@ -11,7 +12,7 @@ const { data } = Astro.props;
 const items = (data.items ?? []).filter((item) => item !== null);
 ---
 
-<article class="container mx-auto py-24 grid grid-cols-1 md:grid-cols-2 px-8 sm:px-0">
+<SectionContainer class="grid grid-cols-1 md:grid-cols-2">
   <div class="max-w-lg">
     <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
       {data.title}
@@ -34,4 +35,4 @@ const items = (data.items ?? []).filter((item) => item !== null);
       ))}
     </div>
   </div>
-</article>
+</SectionContainer>

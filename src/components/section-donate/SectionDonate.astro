@@ -4,6 +4,7 @@ import { tinaField } from "@tinacms/astro/tina-field";
 import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
 import type { SectionDonateSection } from "../../lib/data";
 import LinkButton from "../link-button/LinkButton.astro";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionDonateSection;
@@ -12,21 +13,19 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="bg-primary-500 px-8 sm:px-0">
-  <div class="container mx-auto py-24 max-w-4xl">
-    <h2 class="text-white mb-6 font-bold uppercase tracking-wider font-sans" data-tina-field={tinaField(data, "title")}>
-      {data.title}
-    </h2>
-    <div
-      class="text-4xl leading-normal font-serif text-white mb-6 [&_a]:underline [&_a]:underline-offset-4"
-      data-tina-field={tinaField(data, "subTitle")}
-    >
-      <TinaMarkdown content={data.subTitle} />
-    </div>
-    <div class="flex justify-end" data-tina-field={tinaField(data, "buttons")}>
-      {data.buttons?.map((button) => button && (
-        <LinkButton data={button} />
-      ))}
-    </div>
+<SectionContainer background="bg-primary-500" class="max-w-4xl">
+  <h2 class="text-white mb-6 font-bold uppercase tracking-wider font-sans" data-tina-field={tinaField(data, "title")}>
+    {data.title}
+  </h2>
+  <div
+    class="text-4xl leading-normal font-serif text-white mb-6 [&_a]:underline [&_a]:underline-offset-4"
+    data-tina-field={tinaField(data, "subTitle")}
+  >
+    <TinaMarkdown content={data.subTitle} />
   </div>
-</section>
+  <div class="flex justify-end" data-tina-field={tinaField(data, "buttons")}>
+    {data.buttons?.map((button) => button && (
+      <LinkButton data={button} />
+    ))}
+  </div>
+</SectionContainer>

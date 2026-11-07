@@ -30,7 +30,7 @@ if (!data) {
 }
 ---
 
-<Base>
+<Base noindex={data.noindex}>
   <TinaIsland name="page" wrapper={islands.page.wrapper} params={{ slug }} primary>
     <PageBody data={data} />
   </TinaIsland>

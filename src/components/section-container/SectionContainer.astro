@@ -1,0 +1,22 @@
+---
+// Shared outer frame for page sections, so width, side gutter and vertical
+// spacing are the same everywhere:
+// - `background`: classes for the full-width band behind the section.
+// - `layout="bleed"`: container only, for sections that handle their own
+//   gutter and spacing (e.g. images or coloured blocks that run to the edge).
+// - `class` and other attributes go on the inner container.
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  background?: string | false | null;
+  layout?: "default" | "bleed";
+}
+
+const { background, layout = "default", class: className, ...attrs } = Astro.props;
+---
+
+<section class={background || undefined}>
+  <div class:list={["container mx-auto", layout === "default" && "px-8 sm:px-0 py-24", className]} {...attrs}>
+    <slot />
+  </div>
+</section>

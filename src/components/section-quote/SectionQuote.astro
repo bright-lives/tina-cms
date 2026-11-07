@@ -1,6 +1,7 @@
 ---
 import { tinaField } from "@tinacms/astro/tina-field";
 import type { SectionQuoteSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionQuoteSection;
@@ -11,7 +12,7 @@ const quotes = (data.quotes ?? []).filter((quote) => quote !== null);
 const single = quotes.length === 1;
 ---
 
-<section class="container mx-auto py-24 px-8 sm:px-0">
+<SectionContainer>
   {data.title && (
     <h2 class="text-4xl leading-normal font-serif mb-12" data-tina-field={tinaField(data, "title")}>
       {data.title}
@@ -53,4 +54,4 @@ const single = quotes.length === 1;
       </figure>
     ))}
   </div>
-</section>
+</SectionContainer>

@@ -3,6 +3,7 @@
 import { tinaField } from "@tinacms/astro/tina-field";
 import TinaMarkdown from "@tinacms/astro/TinaMarkdown.astro";
 import type { SectionIntroSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionIntroSection;
@@ -11,8 +12,8 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="container mx-auto grid grid-cols-1 md:grid-cols-2 px-10 md:px-0">
-  <div class="items-center py-24">
+<SectionContainer class="grid grid-cols-1 md:grid-cols-2">
+  <div>
     <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
       {data.title}
     </h2>
@@ -20,4 +21,4 @@ const { data } = Astro.props;
       <TinaMarkdown content={data.intro} />
     </div>
   </div>
-</section>
+</SectionContainer>

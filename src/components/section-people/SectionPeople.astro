@@ -1,6 +1,7 @@
 ---
 import { tinaField } from "@tinacms/astro/tina-field";
 import type { SectionPeopleSection } from "../../lib/data";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: SectionPeopleSection;
@@ -14,7 +15,7 @@ const initials = (name?: string | null) =>
   (name ?? "").split(/\s+/).filter(Boolean).map((part) => part[0]).slice(0, 2).join("").toUpperCase();
 ---
 
-<section class="container mx-auto py-24 px-8 sm:px-0">
+<SectionContainer>
   <div class="max-w-lg mb-12">
     <h2 class="text-4xl leading-normal font-serif mb-6" data-tina-field={tinaField(data, "title")}>
       {data.title}
@@ -47,4 +48,4 @@ const initials = (name?: string | null) =>
       </article>
     ))}
   </div>
-</section>
+</SectionContainer>

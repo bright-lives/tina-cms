@@ -2,6 +2,7 @@
 import { tinaField } from "@tinacms/astro/tina-field";
 import type { SectionStandoutColumnsSection } from "../../lib/data";
 import LinkButton from "../link-button/LinkButton.astro";
+import SectionContainer from "../section-container/SectionContainer.astro";
 
 // Mirrors bright-lives-blocks/section-standout-columns/{save,style}.js and column/{save,style}.js.
 interface Props {
@@ -37,7 +38,7 @@ const getColumnBackgroundColor = (index: number) =>
 const titleSize = amountOfColumns === 5 ? "text-xl" : "text-2xl";
 ---
 
-<section class:list={["container mx-auto", data.title && "pt-24"]}>
+<SectionContainer layout="bleed" class={data.title ? "pt-24" : undefined}>
   {data.title && (
     <div class="flex mb-6 px-8 sm:px-0">
       <div class="grid grid-cols-1 md:grid-cols-2">
@@ -68,4 +69,4 @@ const titleSize = amountOfColumns === 5 ? "text-xl" : "text-2xl";
       </article>
     ))}
   </div>
-</section>
+</SectionContainer>

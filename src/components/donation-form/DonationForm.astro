@@ -8,9 +8,11 @@ import SectionContainer from "../section-container/SectionContainer.astro";
 
 interface Props {
   data: DonationFormSection;
+  // On the examples page: render the form, but never start a payment.
+  example?: boolean;
 }
 
-const { data } = Astro.props;
+const { data, example = false } = Astro.props;
 const amounts = [5, 10, 15];
 const inputClass = "p-4 w-full bg-slate-100 border border-slate-300 rounded";
 ---
@@ -24,7 +26,12 @@ const inputClass = "p-4 w-full bg-slate-100 border border-slate-300 rounded";
       <TinaMarkdown content={data.description} />
     </div>
   </div>
-  <form class="donation-form bg-white p-8" novalidate>
+  <form class:list={[!example && "donation-form", "bg-white p-8"]} novalidate>
+    {example && (
+      <p class="mb-6 p-4 bg-secondary-100 border border-secondary-300 rounded">
+        Dit is een voorbeeld. Met dit formulier kun je niet doneren.
+      </p>
+    )}
     <input type="hidden" name="redirect" value={data.thankYouPage ? pageUrl(data.thankYouPage) : "/"} />
     <div data-error class="hidden mb-4 p-4 bg-red-100 border border-red-500 rounded" role="alert">
       <p class="text-red-500"></p>
@@ -56,6 +63,7 @@ const inputClass = "p-4 w-full bg-slate-100 border border-slate-300 rounded";
       <button
         class="p-4 border-2 text-white bg-primary-500 border-primary-500 hover:bg-primary-700 disabled:opacity-60"
         type="submit"
+        disabled={example}
         data-tina-field={tinaField(data, "submitLabel")}
       >
         {data.submitLabel || "Doneer"}

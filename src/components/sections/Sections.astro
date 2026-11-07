@@ -46,7 +46,7 @@ const showLabels = !!data?.showSectionLabels;
       case 'PagesSectionsFaq': return <SectionFaq data={section} />;
       case 'PagesSectionsDownloads': return <SectionDownloads data={section} />;
       case 'PagesSectionsDonate': return <SectionDonate data={section} />;
-      case 'PagesSectionsDonationForm': return <DonationForm data={section} />;
+      case 'PagesSectionsDonationForm': return <DonationForm data={section} example={showLabels} />;
       default: return null;
     }
   })();

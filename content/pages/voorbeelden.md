@@ -182,7 +182,7 @@ sections:
     _template: donate
   - title: Donatieformulier
     description: |
-      Let op: dit is het echte formulier. Een betaling die je hier start, wordt ook echt verwerkt.
+      Op deze voorbeeldpagina kun je het formulier niet versturen.
     submitLabel: Doneer
     thankYouPage: content/pages/bedankt.md
     _template: donationForm
